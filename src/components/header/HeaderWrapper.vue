@@ -55,8 +55,9 @@ export default {
                     console.warn("url")
                     console.log(this.apiUrl);
 
-                    
+                    // # prima assegno alla lista la risposta 
                     this.listFilms = response.data.results;
+                    //# poi faccio la chiamata per il parent aaaaaaaaah sveglia!
                     this.giveListToParent();
 
                     console.warn("list");
@@ -64,7 +65,7 @@ export default {
                     console.log(response.data.results);
 
                     this.apiUrl = "https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=";
-                    
+
                     console.warn("url-reset")
                     console.log(this.apiUrl);
                 })
