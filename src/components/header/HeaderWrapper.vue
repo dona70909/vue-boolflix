@@ -6,9 +6,9 @@
                     <h1 class="text-danger">Boolflix</h1>
                 </div>
                 <div class="col-6 d-flex align-items-center justify-content-end">
-                    <input v-model="modelTitle" class="me-2" type="text">
+                    <input @keyup.enter="getSearchFilmApi" v-model="modelTitle" class="me-2" type="text">
                     <button @click="getSearchFilmApi" class="btn btn-danger text-white">Cerca!</button>
-                    <!-- <p class="text-white">{{this.searchTitle}}</p> -->
+                    <!--  <p class="d-none">{{this.callTheFx()}}</p>  -->
                 </div>
             </div>
         </section>
@@ -21,20 +21,15 @@ export default {
     name:"HeaderWrapper",
     data(){
         return {
-            modelTitle:"",
-            title:"",
+            modelTitle:undefined,
+            title:undefined,
             apiUrl:'https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=', 
             listFilmsEmpty:[],
             listFilms:[],
+            isTyped: false,
         }
     },
-
-    mounted(){
-        /* 
-            call of the fx " getSearchFilmApi()" that makes a API CALL with v-model as a query(from the button, query dynamic)
-        */
-        this.getSearchFilmApi();
-    },
+    
 
     methods: {
 
@@ -43,6 +38,7 @@ export default {
         getSearchTitle(){
             this.title = this.modelTitle;
             this.modelTitle = "";
+            console.log(this.title);
             return this.title
         },
 
@@ -52,33 +48,37 @@ export default {
          * at the end the Fx returns an ArrayObj that contains the response.data.whatIwant
          */
         getSearchFilmApi(){
-            /*   let params = this.getSearchTitle();
-            console.warn(params);
-            this.apiUrl += params; */
-            /* const apiUrl = "https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query="; */
-            this.apiUrl += this.getSearchTitle();
-            console.warn("url")
-            console.log(this.apiUrl)
-            axios.get(this.apiUrl)
-            .then((response) => {
-                this.apiUrl = "https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=";
-                this.giveListToParent();
-                this.listFilms = response.data.results;
+            this.getSearchTitle();
+            if((this.title != undefined)){
+                axios.get(this.apiUrl += this.title)
+                .then((response) => {
+                    console.warn("url")
+                    console.log(this.apiUrl);
+                    this.apiUrl = "https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=";
 
-                console.warn("list");
-                console.log(this.listFilms);
-                console.log(response.data.results);
-                return  this.listFilms;
-            })
-            .catch((error) => {
-                console.error(error);
-            })
+                    console.warn("url-reset")
+                    console.log(this.apiUrl);
+
+                    this.giveListToParent();
+                    this.listFilms = response.data.results;
+
+                    console.warn("list");
+                    console.log(this.listFilms);
+                    console.log(response.data.results);
+                    return  this.listFilms;
+                })
+                .catch((error) => {
+                    console.error(error);
+                })
+            }else{
+                console.warn("empty title")
+            }
         },
 
         /* function that emits the Array before obtained and give it to the parent */
         giveListToParent(){
             this.$emit('getListFilms',this.listFilms);
-        }
+        },
     },
 }
 </script>
