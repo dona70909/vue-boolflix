@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import axios from "axios"
 export default {
     name:"HeaderWrapper",
     data(){
@@ -29,8 +30,23 @@ export default {
         getSearchTitle(){
             this.title = this.modelTitle;
             this.modelTitle = "";
-            console.log(this.title)
-        }
+            /* console.log(this.title) */
+            return this.title
+        },
+
+        getSearchFilmApi(){
+            axios.get('https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=ritorno+al+futuro')
+            .then((response) => {
+                console.log(response.data.results[0].title)
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+        },
+    },
+
+    mounted(){
+        this.getSearchFilmApi();
     }
 }
 </script>
