@@ -24,9 +24,9 @@ export default {
             modelTitle:undefined,
             title:undefined,
             apiUrl:'https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=', 
-            listFilmsEmpty:[],
+            //listFilmsEmpty:[],
             listFilms:[],
-            isTyped: false,
+            //isTyped: false,
         }
     },
     
@@ -55,13 +55,16 @@ export default {
                     console.warn("url")
                     console.log(this.apiUrl);
 
-                    this.giveListToParent();
+                    
                     this.listFilms = response.data.results;
+                    this.giveListToParent();
 
                     console.warn("list");
                     console.log(this.listFilms);
                     console.log(response.data.results);
+
                     this.apiUrl = "https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=";
+                    
                     console.warn("url-reset")
                     console.log(this.apiUrl);
                 })
