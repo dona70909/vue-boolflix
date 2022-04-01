@@ -2,7 +2,7 @@
   <div id="app">
     <HeaderWrapper @getListFilms="loadFilms"/>
     <MainWrapper
-    :loadedFilms="loadedFilms"
+    :loadedFilmsList="loadedFilms"
     />
   </div>
 </template>
@@ -28,6 +28,8 @@ export default {
   methods:{
     loadFilms(films){
       this.loadedFilms = films;
+      console.warn("loaded");
+      console.log(this.loadedFilms);
     }
   }
 }

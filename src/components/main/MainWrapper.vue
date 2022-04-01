@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-12">
                     <ul>
-                        <li class="text-dark" v-for="(film,index) in loadedFilms" :key="index">
+                        <li class="text-dark" v-for="(film,index) in loadedFilmsList" :key="index">
                             {{film.title}}
                         </li>
                     </ul>
@@ -19,7 +19,7 @@ export default {
     name:"MainWrapper",
 
     props:{
-        "loadedFilms" :Array,
+        "loadedFilmsList" :Array,
     }
 }
 </script>

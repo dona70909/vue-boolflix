@@ -29,42 +29,57 @@ export default {
         }
     },
 
+    mounted(){
+        /* 
+            call of the fx " getSearchFilmApi()" that makes a API CALL with v-model as a query(from the button, query dynamic)
+        */
+        this.getSearchFilmApi();
+    },
+
     methods: {
+
+        /**
+         * finction that gets the input(title) from the button and resets it each time i click  */ 
         getSearchTitle(){
             this.title = this.modelTitle;
             this.modelTitle = "";
-            console.warn(this.title)
             return this.title
         },
 
+        /**
+         * Fucntion that each time i click the Btn get the v-model through the fx(getSearchTitle()) and 
+         * merge the v-model with the fixed url of the API in order to get a new api url each time based on the v-model input
+         * at the end the Fx returns an ArrayObj that contains the response.data.whatIwant
+         */
         getSearchFilmApi(){
             /*   let params = this.getSearchTitle();
             console.warn(params);
             this.apiUrl += params; */
             /* const apiUrl = "https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query="; */
             this.apiUrl += this.getSearchTitle();
+            console.warn("url")
             console.log(this.apiUrl)
             axios.get(this.apiUrl)
             .then((response) => {
-                /*  console.error(this.apiUrl) */
-                console.log(response.data.results);
                 this.apiUrl = "https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=";
                 this.giveListToParent();
                 this.listFilms = response.data.results;
+
+                console.warn("list");
+                console.log(this.listFilms);
+                console.log(response.data.results);
+                return  this.listFilms;
             })
             .catch((error) => {
                 console.error(error);
             })
         },
 
+        /* function that emits the Array before obtained and give it to the parent */
         giveListToParent(){
             this.$emit('getListFilms',this.listFilms);
         }
     },
-
-    mounted(){
-        this.getSearchFilmApi();
-    }
 }
 </script>
 
