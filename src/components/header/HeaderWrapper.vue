@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-6 d-flex align-items-center justify-content-end">
                     <input v-model="modelTitle" class="me-2" type="text">
-                    <button @click="getSearchTitle" class="btn btn-danger text-white">Cerca!</button>
+                    <button @click="getSearchFilmApi" class="btn btn-danger text-white">Cerca!</button>
                     <!-- <p class="text-white">{{this.searchTitle}}</p> -->
                 </div>
             </div>
@@ -23,6 +23,7 @@ export default {
         return {
             modelTitle:"",
             title:"",
+            apiUrl:'https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query='
         }
     },
 
@@ -30,14 +31,18 @@ export default {
         getSearchTitle(){
             this.title = this.modelTitle;
             this.modelTitle = "";
-            /* console.log(this.title) */
+            console.warn(this.title)
             return this.title
         },
 
         getSearchFilmApi(){
-            axios.get('https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=ritorno+al+futuro')
+            let params = this.getSearchTitle();
+            console.warn(params);
+            this.apiUrl += params;
+            axios.get(this.apiUrl)
             .then((response) => {
-                console.log(response.data.results[0].title)
+                console.error(this.apiUrl)
+                console.log(response.data.results)
             })
             .catch((error) => {
                 console.error(error);
@@ -45,7 +50,7 @@ export default {
         },
     },
 
-    mounted(){
+    created(){
         this.getSearchFilmApi();
     }
 }
