@@ -38,10 +38,11 @@ export default {
         },
 
         getSearchFilmApi(){
-            let params = this.getSearchTitle();
+            /*   let params = this.getSearchTitle();
             console.warn(params);
-            this.apiUrl += params;
-
+            this.apiUrl += params; */
+            this.apiUrl += this.getSearchTitle();
+            console.log(this.apiUrl)
             axios.get(this.apiUrl)
             .then((response) => {
                 /*  console.error(this.apiUrl) */
@@ -59,7 +60,7 @@ export default {
         }
     },
 
-    created(){
+    mounted(){
         this.getSearchFilmApi();
     }
 }
