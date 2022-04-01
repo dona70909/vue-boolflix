@@ -23,7 +23,7 @@ export default {
         return {
             modelTitle:"",
             title:"",
-            apiUrl:'https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=',
+            apiUrl:'https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=', 
             listFilmsEmpty:[],
             listFilms:[],
         }
@@ -41,12 +41,14 @@ export default {
             /*   let params = this.getSearchTitle();
             console.warn(params);
             this.apiUrl += params; */
+            /* const apiUrl = "https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query="; */
             this.apiUrl += this.getSearchTitle();
             console.log(this.apiUrl)
             axios.get(this.apiUrl)
             .then((response) => {
                 /*  console.error(this.apiUrl) */
-                console.log(response.data.results)
+                console.log(response.data.results);
+                this.apiUrl = "https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=";
                 this.giveListToParent();
                 this.listFilms = response.data.results;
             })
