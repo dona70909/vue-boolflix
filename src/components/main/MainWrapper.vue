@@ -11,7 +11,8 @@
                     :mediaType ="film.media_type"
                     :nameSerie="film.name"
                     :originSerieName="film.original_name"
-                    :seriePoster="film.poster_path"
+                    :poster="film.poster_path"
+                    :backdrop="film.backdrop_path"
                     />
                 </div>
             </div>
