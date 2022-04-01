@@ -1,8 +1,8 @@
 <template>
     <div class="card" style="width: 18rem;">
-        <!-- <img class="card-img-top"  alt="Card image cap"> -->
         <div class="card-body">
             <h5 class="card-title">{{title}}</h5>
+            <country-flag :country='language' size='small'/>
             <p class="card-text"> {{originalTitle}} - {{language}} -  {{vote}} </p>
         </div>
     </div>

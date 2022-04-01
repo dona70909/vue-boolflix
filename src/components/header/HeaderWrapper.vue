@@ -87,7 +87,7 @@ export default {
 
 <style lang="scss" scoped>
 header{
-    height: 15vh;
+    height: 80px;
     background-color: black;
 }
 </style>
