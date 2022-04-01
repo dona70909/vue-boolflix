@@ -30,7 +30,8 @@ export default {
       this.loadedFilms = films;
       console.warn("loaded");
       console.log(this.loadedFilms);
-    }
+    },
+
   }
 }
 </script>

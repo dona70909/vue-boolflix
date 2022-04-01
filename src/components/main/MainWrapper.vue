@@ -8,6 +8,9 @@
                     :originalTitle="film.original_title"
                     :language="film.original_language"
                     :vote="film.vote_average"
+                    :mediaType ="film.media_type"
+                    :nameSerie="film.name"
+                    :originSerieName="film.original_name"
                     />
                 </div>
             </div>
@@ -25,7 +28,16 @@ export default {
     },
     props:{
         "loadedFilmsList" :Array,
-    }
+    },
+
+    data(){
+        return{
+            /*  filterFilms:[],
+            filterSeries:[], */
+            tv:"tv",
+            movie:"movie"
+        }
+    },
 }
 </script>
 

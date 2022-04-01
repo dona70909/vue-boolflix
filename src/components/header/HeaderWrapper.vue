@@ -23,10 +23,10 @@ export default {
         return {
             modelTitle:undefined,
             title:undefined,
-            apiUrl:'https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=', 
-            //listFilmsEmpty:[],
+            //apiUrl:'https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=',
+            apiUrl:'https://api.themoviedb.org/3/search/multi?api_key=3fb6e38d8c0865b83040430153ed8475&query=', 
             listFilms:[],
-            //isTyped: false,
+            
         }
     },
     
@@ -34,7 +34,7 @@ export default {
     methods: {
 
         /**
-         * finction that gets the input(title) from the button and resets it each time i click  */ 
+         * !finction that gets the input(title) from the button and resets it each time i click  */ 
         getSearchTitle(){
             this.title = this.modelTitle;
             this.modelTitle = "";
@@ -43,9 +43,9 @@ export default {
         },
 
         /**
-         * Fucntion that each time i click the Btn get the v-model through the fx(getSearchTitle()) and 
-         * merge the v-model with the fixed url of the API in order to get a new api url each time based on the v-model input
-         * at the end the Fx returns an ArrayObj that contains the response.data.whatIwant
+         * !Fucntion that each time i click the Btn get the v-model through the fx(getSearchTitle()) and 
+         * !merge the v-model with the fixed url of the API in order to get a new api url each time based on the v-model input
+         * !at the end the Fx returns an ArrayObj that contains the response.data.whatIwant
          */
         getSearchFilmApi(){
             this.getSearchTitle();
@@ -64,8 +64,8 @@ export default {
                     console.log(this.listFilms);
                     console.log(response.data.results);
 
-                    this.apiUrl = "https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=";
-
+                    this.apiUrl = "https://api.themoviedb.org/3/search/multi?api_key=3fb6e38d8c0865b83040430153ed8475&query=";
+                    // this.apiUrl = "https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=";
                     console.warn("url-reset")
                     console.log(this.apiUrl);
                 })
@@ -77,7 +77,7 @@ export default {
             }
         },
 
-        /* function that emits the Array before obtained and give it to the parent */
+        // !function that emits the Array before obtained and give it to the parent 
         giveListToParent(){
             this.$emit('getListFilms',this.listFilms);
         },
