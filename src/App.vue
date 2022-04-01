@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <HeaderWrapper/>
-    <MainWrapper/>
+    <HeaderWrapper @getListFilms="loadFilms"/>
+    <MainWrapper
+    :loadedFilms="loadedFilms"
+    />
   </div>
 </template>
 
@@ -14,6 +16,18 @@ export default {
   components: {
     HeaderWrapper,
     MainWrapper
+  },
+
+  data(){
+    return{
+      loadedFilms:[],
+    }
+  },
+
+  methods:{
+    loadFilms(films){
+      this.loadedFilms = films;
+    }
   }
 }
 </script>

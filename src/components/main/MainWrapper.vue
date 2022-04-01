@@ -3,7 +3,11 @@
         <section class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    Contente goes here
+                    <ul>
+                        <li class="text-dark" v-for="(film,index) in loadedFilms" :key="index">
+                            {{film.title}}
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -12,7 +16,11 @@
 
 <script>
 export default {
-    name:"MainWrapper"
+    name:"MainWrapper",
+
+    props:{
+        "loadedFilms" :Array,
+    }
 }
 </script>
 
