@@ -6,8 +6,9 @@
                     <h1 class="text-danger">Boolflix</h1>
                 </div>
                 <div class="col-6 d-flex align-items-center justify-content-end">
-                    <input class="me-2" type="text">
-                    <button class="btn btn-danger text-white">Cerca!</button>
+                    <input v-model="modelTitle" class="me-2" type="text">
+                    <button @click="getSearchTitle" class="btn btn-danger text-white">Cerca!</button>
+                    <!-- <p class="text-white">{{this.searchTitle}}</p> -->
                 </div>
             </div>
         </section>
@@ -16,7 +17,21 @@
 
 <script>
 export default {
-name:"HeaderWrapper"
+    name:"HeaderWrapper",
+    data(){
+        return {
+            modelTitle:"",
+            title:"",
+        }
+    },
+
+    methods: {
+        getSearchTitle(){
+            this.title = this.modelTitle;
+            this.modelTitle = "";
+            console.log(this.title)
+        }
+    }
 }
 </script>
 
