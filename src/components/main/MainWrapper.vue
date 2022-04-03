@@ -7,6 +7,7 @@
                     :nameSerie="film.name"
                     :originalTitle="film.original_title"
                     :originSerieName="film.original_name"
+                    :overview="film.overview"
                     :language="film.original_language"
                     :vote="film.vote_average"
                     :poster="film.poster_path"
