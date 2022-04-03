@@ -25,7 +25,9 @@ export default {
             title:undefined,
             apiUrlMovie:'https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=',
             apiUrlTv:'https://api.themoviedb.org/3/search/tv?api_key=3fb6e38d8c0865b83040430153ed8475&query=', 
+            
             listFilms:[],
+            listsTv:[],
             
         }
     },
@@ -50,30 +52,33 @@ export default {
         getSearchFilmApi(){
             this.getSearchTitle();
             if((this.title != undefined)){
-                axios.get(this.apiUrlMovie += this.title,this.apiUrlTv += this.title)
-                .then((response) => {
+                axios.all([axios.get(this.apiUrlTv += this.title),axios.get(this.apiUrlMovie += this.title)])
+                .then(axios.spread((responseTv,responseMovie) => {
                     console.warn("url")
                     console.log(this.apiUrlMovie);
                     console.log(this.apiUrlTv);
 
                     // # prima assegno alla lista la risposta 
-                    this.listFilms = response.data.results;
+
+                    this.listFilms = responseTv.data.results;
+                    this.listsTv = responseMovie.data.results;
+                    Array.prototype.push.apply(this.listFilms,this.listsTv); 
                     //# poi faccio la chiamata per il parent aaaaaaaaah sveglia!
                     this.giveListToParent();
 
                     console.warn("list");
                     console.log(this.listFilms);
-                    console.log(response.data.results);
+                    //console.log(response.data.results);
 
                     this.apiUrlMovie = "https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=";
                     this.apiUrlTv = "https://api.themoviedb.org/3/search/tv?api_key=3fb6e38d8c0865b83040430153ed8475&query=";
                     console.warn("url-reset")
                     console.log(this.apiUrlMovie);
                     console.log(this.apiUrlTv)
-                })
-                .catch((error) => {
-                    if(error.response.status == 422){
-                        console.log("nessun contenuto")
+                }))
+                .catch((errors) => {
+                    if(errors.response.status == 422){
+                        console.error("empty content")
                     }
                 })
             }else{
