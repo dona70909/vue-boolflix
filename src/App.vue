@@ -21,7 +21,6 @@ export default {
   data(){
     return{
       loadedFilms:[],
-      emptyFilms:[],
     }
   },
 
@@ -37,4 +36,8 @@ export default {
 </script>
 
 <style lang="scss">
+html{
+  background: rgb(43, 40, 40);
+}
+
 </style>

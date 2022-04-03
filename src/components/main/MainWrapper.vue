@@ -1,20 +1,19 @@
 <template>
     <main>
         <section class="container-fluid">
-            <div class="row py-4 ">
-                <div class="col-12 d-flex flex-wrap  justify-content-center container-film-cards">
-                    <FilmCard v-for="(film,index) in loadedFilmsList" :key="index"
+            <div class="row-cols-5 row-cols-xl-7 d-flex flex-wrap justify-content-center container-film-cards py-4">
+                <FilmCard v-for="(film,index) in loadedFilmsList" :key="index"
                     :title="film.title"
+                    :nameSerie="film.name"
                     :originalTitle="film.original_title"
+                    :originSerieName="film.original_name"
                     :language="film.original_language"
                     :vote="film.vote_average"
-                    :mediaType ="film.media_type"
-                    :nameSerie="film.name"
-                    :originSerieName="film.original_name"
                     :poster="film.poster_path"
                     :backdrop="film.backdrop_path"
-                    />
-                </div>
+                />
+
+                <div class="text-white" v-if="loadedFilmsList.length == 0">No results</div>
             </div>
         </section>
     </main>
@@ -34,8 +33,6 @@ export default {
 
     data(){
         return{
-            /*  filterFilms:[],
-            filterSeries:[], */
             tv:"tv",
             movie:"movie"
         }
@@ -44,7 +41,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/*
+    margin 0 auto e tolgo just-co-cen cosi l'ultima carda non sta al centro
+    risolvere contenuto a scatti width% ??
+    2 liste film e serie o lascio cosi ?
+    implementare altri milestones!(stars and backcard)
+
+    <!--  :nameSerie="film.name"
+        :originSerieName="film.original_name" -->
+ */
+main{
+    background: rgb(43, 40, 40);
+}
 .container-film-cards{
-    gap: 1rem 2rem;
+    gap: 1rem;
 }
 </style>
