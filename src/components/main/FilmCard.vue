@@ -2,15 +2,17 @@
     <div class="card col position-relative">
 
         <!-- poster null and backdrop ok -->
-        <img :class="(poster == null)? 'd-none' : '' " class="card-img-top mb-2 poster-img" :src="'http://image.tmdb.org/t/p/w500/' + poster"  :alt="nameSerie || title">
-        <div class="poster-img-empty" v-if="poster == null && backdrop != null">{{title}} {{nameSerie}}</div> 
+        <img v-show="poster != null" :class="((poster == null) && (backdrop != null))? 'd-none' : '' " class="card-img-top mb-2 poster-img" :src="'http://image.tmdb.org/t/p/w500/' + poster"  :alt="nameSerie || title">
+        <div class="poster-img-empty " v-if="poster == null && backdrop != null">
+            <h5 class="text-poster-empty">{{title}} {{nameSerie}}</h5>
+        </div>  
 
         <!-- solo backdrop null and poster ok-->
-        <img :class="(backdrop == null)? 'd-none' : '' "  class="card-img-top back-img" :src="'http://image.tmdb.org/t/p/w500/' + backdrop" :alt="nameSerie || title">    
-        <div class="back-img-empty" v-if="backdrop == null && poster != null"></div>
+        <img v-show="backdrop != null" :class="((backdrop == null) && (poster != null))? 'd-none' : '' "  class="card-img-top back-img" :src="'http://image.tmdb.org/t/p/w500/' + backdrop" :alt="nameSerie || title">    
+        <div class="back-img-empty" v-show="backdrop == null && poster != null"></div>
 
         <!-- entrambi null -->
-        <div class="poster-img-empty d-flex justify-content-center align-items-center" v-if="(backdrop == null) && (poster == null)">
+        <div class="poster-img-empty " v-if="(backdrop == null) && (poster == null)">
             <h5 class="text-poster-empty">{{title}} {{nameSerie}}</h5>
         </div>
         <div class="back-img-empty" v-if="(backdrop == null) && (poster == null)"></div>
@@ -98,6 +100,10 @@ export default {
         font-weight: 900;
         text-shadow: 2px 2px 10px black;
         text-transform: uppercase;
+
+        display:flex; 
+        justify-content: center; 
+        align-items:center;
     }
     .back-img-empty{
         display: none;
@@ -143,7 +149,7 @@ export default {
 }
 .card:hover .poster-img-empty{
     display: none;
-    background: rgb(46, 44, 44);
+    
 }
 
 .card:hover .text-poster-empty{
