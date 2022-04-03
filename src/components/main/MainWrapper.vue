@@ -42,15 +42,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/*
-    margin 0 auto e tolgo just-co-cen cosi l'ultima carda non sta al centro
-    risolvere contenuto a scatti width% ??
-    2 liste film e serie o lascio cosi ?
-    implementare altri milestones!(stars and backcard)
 
-    <!--  :nameSerie="film.name"
-        :originSerieName="film.original_name" -->
- */
 main{
     background: rgb(43, 40, 40);
 }
