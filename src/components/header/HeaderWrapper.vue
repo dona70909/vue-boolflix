@@ -1,11 +1,12 @@
 <template>
     <header>
         <section class="container-fluid">
-            <div class="row align-items-center justify-content-between px-5 py-2">
-                <div class="col-6">
-                    <h1 class="text-danger">Boolflix</h1>
+            <div class="row flex-column flex-sm-row align-items-center justify-content-between px-5 py-4">
+                <div class="col-6 mb-2 mb-sm-0">
+                    <!-- <h1 class="text-danger">Boolflix</h1> -->
+                    <img :src="require('@/assets/img/logo-netflix.png')" alt="">
                 </div>
-                <div class="col-6 d-flex align-items-center justify-content-end">
+                <div class="col-6 d-flex align-items-center justify-content-sm-end justify-content-center w-50">
                     <input @keyup.enter="getSearchFilmApi" v-model="modelTitle" class="me-2" type="text">
                     <button @click="getSearchFilmApi" class="btn btn-danger text-white">Cerca!</button>
                     <!--  <p class="d-none">{{this.callTheFx()}}</p>  -->
@@ -68,8 +69,7 @@ export default {
 
                     console.warn("list");
                     console.log(this.listFilms);
-                    //console.log(response.data.results);
-
+            
                     this.apiUrlMovie = "https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=";
                     this.apiUrlTv = "https://api.themoviedb.org/3/search/tv?api_key=3fb6e38d8c0865b83040430153ed8475&query=";
                     console.warn("url-reset")
@@ -96,7 +96,10 @@ export default {
 
 <style lang="scss" scoped>
 header{
-    height: 80px;
     background-color: black;
+
+    img{
+        height:40px;
+    }
 }
 </style>
