@@ -61,10 +61,10 @@ export default {
 
                     // # prima assegno alla lista la risposta 
 
-                    this.listFilms = responseTv.data.results;
-                    this.listsTv = responseMovie.data.results;
+                    this.listFilms = responseMovie.data.results;
+                    this.listsTv = responseTv.data.results;
                     Array.prototype.push.apply(this.listFilms,this.listsTv); 
-                    //# poi faccio la chiamata per il parent aaaaaaaaah sveglia!
+                    //# poi faccio la chiamata per il parent 
                     this.giveListToParent();
 
                     console.warn("list");
