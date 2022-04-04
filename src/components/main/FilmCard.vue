@@ -95,15 +95,7 @@ export default {
                 
                 axios.get(`https://api.themoviedb.org/3/movie/${this.id}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US`)
                 .then((response) =>{
-                    /* this.castMovie = response.data.name; */
-                    /*   for(let i = 0; i<5;i++){
-                        console.log("credits" + i)
-                        console.log(response.data.cast[i].name)
-                    } */
-                    console.log("+++++++++++++++++");
-                    console.log("credits" + i);
                     this.castMovie.push(response.data.cast[i].name);
-                    
                 })
                 .catch((error) => {
                     console.error(error)
