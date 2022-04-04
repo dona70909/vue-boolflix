@@ -12,7 +12,7 @@
         <div class="back-img-empty" v-show="backdrop == null && poster != null"></div>
 
         <!-- entrambi null -->
-        <div class="poster-img-empty " v-if="(backdrop == null) && (poster == null)">
+        <div class="poster-img-empty" v-if="(backdrop == null) && (poster == null)">
             <h5 class="text-poster-empty">{{title}} {{nameSerie}}</h5>
         </div>
         <div class="back-img-empty" v-if="(backdrop == null) && (poster == null)"></div>
@@ -141,9 +141,12 @@ export default {
     }
 }
 
+// # d-none di base- cambia in hover 
 .back-img{
     display: none;
 }
+
+// # hover and d-none del poster-poster-bg-text 
 .card:hover .poster-img{
     display: none;
 }
@@ -156,7 +159,7 @@ export default {
     display: none;
 }
 
-
+// # hover backdropb visible 
 .card:hover .back-img{
     display:block;
     /* opacity: 0.8; */
