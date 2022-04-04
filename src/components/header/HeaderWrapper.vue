@@ -63,7 +63,7 @@ export default {
 
                     this.listFilms = responseMovie.data.results;
                     this.listsTv = responseTv.data.results;
-                    Array.prototype.push.apply(this.listFilms,this.listsTv); 
+                    //Array.prototype.push.apply(this.listFilms,this.listsTv); 
                     //# poi faccio la chiamata per il parent 
                     this.giveListToParent();
 
@@ -88,7 +88,7 @@ export default {
 
         // !function that emits the Array before obtained and give it to the parent 
         giveListToParent(){
-            this.$emit('getListFilms',this.listFilms);
+            this.$emit('getListFilms',this.listFilms,this.listsTv);
         },
     },
 }

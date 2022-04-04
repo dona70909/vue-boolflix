@@ -3,6 +3,7 @@
     <HeaderWrapper @getListFilms="loadFilms"/>
     <MainWrapper
     :loadedFilmsList="loadedFilms"
+    :loadedTvList="loadedTv"
     />
   </div>
 </template>
@@ -21,14 +22,18 @@ export default {
   data(){
     return{
       loadedFilms:[],
+      loadedTv:[],
     }
   },
 
   methods:{
-    loadFilms(films){
+    loadFilms(films,tv){
       this.loadedFilms = films;
+      this.loadedTv = tv;
       console.warn("loaded");
       console.log(this.loadedFilms);
+      console.log("tv")
+      console.log(this.loadedTv);
     },
 
   }

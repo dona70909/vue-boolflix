@@ -20,7 +20,7 @@
         <div class="card-body p-0 position-absolute">
 
             <p class="text-danger">Titolo:</p>
-            <p class="card-title">{{title}} {{nameSerie}}</p>
+            <p class="card-title">{{nameSerie}}</p>
 
             <div class="flag-wrapper">
                 <p class="d-inline-block text-danger me-2">Language:</p>
@@ -29,7 +29,7 @@
             </div>
 
             <p v-show="(originalTitle !=  title) || (originSerieName != nameSerie)" class="text-danger">Original title:</p>
-            <p v-show="(originalTitle !=  title) || (originSerieName != nameSerie)" class="card-text">{{originalTitle}} {{originSerieName}}</p>
+            <p v-show="(originalTitle !=  title) || (originSerieName != nameSerie)" class="card-text">{{originSerieName}}</p>
 
             <p v-show="overview != '' " class="text-danger">Overview:</p>
             <p v-show="overview != '' " class="overview-text mb-1">{{overview}}</p>
@@ -44,7 +44,7 @@
 <script>
 import axios from "axios"
 export default {
-    name:"FilmCard",
+    name:"TvCard",
     data(){
         return{
             castTv:[],
@@ -55,8 +55,6 @@ export default {
     },
 
     props:{
-        "title":String,
-        "originalTitle":String,
         "nameSerie":String,
         "originSerieName":String,
 
@@ -208,4 +206,3 @@ export default {
     display:block;
 }
 </style>
-
