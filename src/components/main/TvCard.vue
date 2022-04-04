@@ -42,15 +42,13 @@
 </template>
 
 <script>
-import axios from "axios"
+//import axios from "axios"
 export default {
     name:"TvCard",
     data(){
         return{
             castTv:[],
-            castMovie:[],
             apiUrlIdTv:"https://api.themoviedb.org/3/tv/{{idtv}}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US",
-            apiUrlIdMovie:"https://api.themoviedb.org/3/movie/{{movieid}}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US"
         }
     },
 
@@ -87,21 +85,6 @@ export default {
             return number;
         },
 
-        getCast(){
-            axios.all([axios.get(`https://api.themoviedb.org/3/tv/${this.id}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US`),axios.get(`https://api.themoviedb.org/3/movie/${this.id}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US`)])
-                .then(axios.spread((responseIdTv,responseIdMovie) => {
-                    for(let i = 0;i < 3; i++){
-                        this.castMovie = responseIdMovie;
-                        this.castTv = responseIdTv;
-                        Array.prototype.push.apply(this.castMovie,this.castTv);
-                    }
-
-                return this.apiUrlIdMovie
-            }))
-            .catch((error) => {
-                console.error(error)
-            })
-        }
     },
 
 }

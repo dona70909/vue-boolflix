@@ -5,16 +5,16 @@
             <div class="row px-1 d-flex flex-wrap justify-content-center container-film-cards py-4">
                 <h1 class="text-danger col-12 text-center">MOVIES</h1>
                 <FilmCard class="col-12 col-sm-6 col-lg-4 col-xl-2 p-0" v-for="(film,index) in loadedFilmsList" :key="index"
-                    :title="film.title"
-                    
-                    :originalTitle="film.original_title"
-    
-                    :overview="film.overview"
-                    :language="film.original_language"
-                    :vote="film.vote_average"
-                    :poster="film.poster_path"
-                    :backdrop="film.backdrop_path"
-                    :id = film.id
+                :title="film.title"
+                
+                :originalTitle="film.original_title"
+
+                :overview="film.overview"
+                :language="film.original_language"
+                :vote="film.vote_average"
+                :poster="film.poster_path"
+                :backdrop="film.backdrop_path"
+                :id = film.id
                 />
                 <h1 class="text-danger col-12 text-center">SERIES</h1>
                 <TvCard class="col-12 col-sm-6 col-lg-4 col-xl-2 p-0 " v-for="(serie,index) in loadedTvList" :key="index"
