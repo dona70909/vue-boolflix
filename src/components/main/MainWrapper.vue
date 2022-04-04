@@ -4,7 +4,7 @@
             <!-- row-cols-5 row-cols-xl-7  -->
             <div class="row px-1 d-flex flex-wrap justify-content-center container-film-cards py-4">
 
-                // !!!!  **************** FILMS CARDS *************************
+                <!-- !!!!  **************** FILMS CARDS ************************* -->
                 <h1 class="text-danger col-12 text-center text-uppercase">Flms</h1>
                 <FilmCard class="col-12 col-sm-6 col-lg-4 col-xl-2 p-0" v-for="(film,indexMovie) in loadedFilmsList" :key="indexMovie.id"
                 :title="film.title"
@@ -18,7 +18,7 @@
                 :poster="film.poster_path"
                 :backdrop="film.backdrop_path"
                 />
-                // !!!!  **************** SERIE CARDS *************************
+                <!-- !!!!  **************** SERIE CARDS ************************* -->
                 <h1 class="text-danger col-12 text-center text-uppercase">Series</h1>
                 <TvCard class="col-12 col-sm-6 col-lg-4 col-xl-2 p-0 " v-for="(serie,indexTv) in loadedTvList" :key="indexTv.id"
                 :nameSerie="serie.name"
