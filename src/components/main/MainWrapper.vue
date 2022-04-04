@@ -28,7 +28,7 @@
                 :backdrop="serie.backdrop_path"
                 />
 
-                <div class="text-white" v-if="loadedFilmsList.length == 0">No results</div>
+                <div class="text-white text-center text-uppercase" v-if="loadedFilmsList.length == 0">No results</div>
             </div>
         </section>
     </main>
