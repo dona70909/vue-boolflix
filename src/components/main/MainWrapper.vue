@@ -1,8 +1,9 @@
 <template>
     <main>
         <section class="container-fluid">
-            <div class="row-cols-5 row-cols-xl-7 d-flex flex-wrap justify-content-center container-film-cards py-4">
-                <FilmCard v-for="(film,index) in loadedFilmsList" :key="index"
+            <!-- row-cols-5 row-cols-xl-7  -->
+            <div class="row  d-flex flex-wrap justify-content-center container-film-cards py-4">
+                <FilmCard class="col-12 col-sm-6 col-lg-4 col-xl-2 px-0 py-0" v-for="(film,index) in loadedFilmsList" :key="index"
                     :title="film.title"
                     :nameSerie="film.name"
                     :originalTitle="film.original_title"

@@ -1,8 +1,8 @@
 <template>
-    <div class="card col position-relative">
-
+    <!-- col -->
+    <div class="card position-relative">
         <!-- poster null and backdrop ok -->
-        <img v-show="poster != null" :class="((poster == null) && (backdrop != null))? 'd-none' : '' " class="card-img-top mb-2 poster-img" :src="'http://image.tmdb.org/t/p/w500/' + poster"  :alt="nameSerie || title">
+        <img v-show="poster != null" :class="((poster == null) && (backdrop != null))? 'd-none' : '' " class="card-img-top poster-img" :src="'http://image.tmdb.org/t/p/w500/' + poster"  :alt="nameSerie || title">
         <div class="poster-img-empty " v-if="poster == null && backdrop != null">
             <h5 class="text-poster-empty">{{title}} {{nameSerie}}</h5>
         </div>  
@@ -83,38 +83,48 @@ export default {
 
 <style lang="scss" scoped>
 .card{
-    width:300px;
-    height: 300px;
+    
+    /* width:300px; */
+    /* width:100%; */
+    height: 300px; 
+
     box-shadow: 2px 2px 2px rgb(14, 13, 13);
     border: none;
     img{
         width:100%;
-        /*  height: 100%;*/
         height: 300px;
+
         object-fit: center;
     }
     .poster-img-empty{
+        /* only when poster image == null */
         width:100%;
         height: 300px;
+
         background: rgb(202, 25, 25);
         font-weight: 900;
         text-shadow: 2px 2px 10px black;
         text-transform: uppercase;
-
         display:flex; 
         justify-content: center; 
         align-items:center;
     }
     .back-img-empty{
+        /* only backdrop == null  */
         display: none;
+
         width:100%;
         height: 300px;
+
         background: rgb(46, 44, 44);
     }
     .card-body{
+        /* text/body visible only in hover */
         display: none;
         top:.3rem;
-        height: 300px;
+
+        /* height: 300px; */
+
         left: .5rem;
         color:white;
         text-shadow: 1px 1px 1px black;
