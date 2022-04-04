@@ -4,7 +4,7 @@
         <!-- poster null and backdrop ok -->
         <img v-show="poster != null" :class="((poster == null) && (backdrop != null))? 'd-none' : '' " class="card-img-top poster-img" :src="'http://image.tmdb.org/t/p/w500/' + poster"  :alt="nameSerie || title">
         <div class="poster-img-empty " v-if="poster == null && backdrop != null">
-            <h5 class="text-poster-empty">{{title}} {{nameSerie}}</h5>
+            <h5 class="text-poster-empty text-center">{{title}} {{nameSerie}}</h5>
         </div>  
 
         <!-- solo backdrop null and poster ok-->
@@ -123,7 +123,7 @@ export default {
         display: none;
         top:.3rem;
 
-        /* height: 300px; */
+        height: 300px;
 
         left: .5rem;
         color:white;
