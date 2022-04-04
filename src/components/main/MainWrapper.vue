@@ -13,6 +13,7 @@
                     :vote="film.vote_average"
                     :poster="film.poster_path"
                     :backdrop="film.backdrop_path"
+                    :id = film.id
                 />
 
                 <div class="text-white" v-if="loadedFilmsList.length == 0">No results</div>

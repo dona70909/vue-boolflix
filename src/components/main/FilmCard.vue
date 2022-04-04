@@ -36,6 +36,7 @@
 
             <p v-if="vote != 0" class="text-danger">Vote:</p>
             <i v-for="(star,index) in starVote(vote)" :key="index" class="bi bi-star-fill"></i> 
+            <p>{{id}}</p>
         </div>
     </div>
 </template>
@@ -56,6 +57,8 @@ export default {
         "vote":Number,      
         "poster":String,
         "backdrop":String,
+
+        "id":Number,
 
     },
 
