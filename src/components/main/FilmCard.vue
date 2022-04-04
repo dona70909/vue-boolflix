@@ -13,7 +13,7 @@
 
         <!-- entrambi null -->
         <div class="poster-img-empty" v-if="(backdrop == null) && (poster == null)">
-            <h5 class="text-poster-empty">{{title}} {{nameSerie}}</h5>
+            <h5 class="text-poster-empty text-center">{{title}} {{nameSerie}}</h5>
         </div>
         <div class="back-img-empty" v-if="(backdrop == null) && (poster == null)"></div>
 
@@ -83,9 +83,6 @@ export default {
 
 <style lang="scss" scoped>
 .card{
-    
-    /* width:300px; */
-    /* width:100%; */
     height: 300px; 
 
     box-shadow: 2px 2px 2px rgb(14, 13, 13);
@@ -101,7 +98,7 @@ export default {
         width:100%;
         height: 300px;
 
-        background: rgb(202, 25, 25);
+        background: rgb(162, 20, 20);
         font-weight: 900;
         text-shadow: 2px 2px 10px black;
         text-transform: uppercase;
