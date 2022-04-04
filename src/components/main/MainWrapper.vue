@@ -6,7 +6,7 @@
 
                 <!-- !!!!  **************** FILMS CARDS ************************* -->
                 <h1 class="text-danger col-12 text-center text-uppercase">Flms</h1>
-                <FilmCard class="col-12 col-sm-6 col-lg-4 col-xl-2 p-0" v-for="(film,indexMovie) in loadedFilmsList" :key="indexMovie.id"
+                <FilmCard :loadedFilmsList="loadedFilmsList" class="col-12 col-sm-6 col-lg-4 col-xl-2 p-0" v-for="(film,indexMovie) in loadedFilmsList" :key="indexMovie.id"
                 :title="film.title"
                 :originalTitle="film.original_title"
 
@@ -56,7 +56,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 main{
     background: rgb(43, 40, 40);
@@ -64,4 +64,5 @@ main{
 .container-film-cards{
     gap: 1rem;
 }
+
 </style>

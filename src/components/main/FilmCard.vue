@@ -36,11 +36,9 @@
 
             <p v-if="vote != 0" class="text-danger">Vote:</p>
             <i v-for="(star,index) in starVote(vote)" :key="index" class="bi bi-star-fill"></i> 
-            <p>{{id}}</p>
             <div>
-                <ul>
-                    <li v-for="(actor,index) in castMovie" :key="index">{{actor}}</li>
-                </ul>
+                <p class="text-danger mb-0">Actors/Actress</p>
+                <span  class="text-actors" v-for="(actor,indexAct) in castMovie" :key="indexAct">{{actor + " | "}}</span>
             </div>
         </div>
     </div>
@@ -53,7 +51,8 @@ export default {
     data(){
         return{
             castMovie:[],
-            apiUrlIdMovie:"https://api.themoviedb.org/3/movie/{{movieid}}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US"
+            apiUrlIdMovie:"https://api.themoviedb.org/3/movie/{{movieid}}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US",
+
         }
     },
 
@@ -68,6 +67,8 @@ export default {
         "backdrop":String,
 
         "id":Number,
+
+        "loadedFilmsList":Array,
 
     },
 
@@ -90,27 +91,29 @@ export default {
             return number;
         },
 
-        getCast(){
-            for(let i = 0; i < 5;i++){
-                
-                axios.get(`https://api.themoviedb.org/3/movie/${this.id}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US`)
-                .then((response) =>{
-                    this.castMovie.push(response.data.cast[i].name);
+        getCast(){ 
+            axios.get(`https://api.themoviedb.org/3/movie/${this.id}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US`)
+                .then((response)=>{
+                    for(let i = 0; i < 5 ; i++){
+                        if(response.data.cast[i] != null){
+                            this.castMovie.push(response.data.cast[i].name);
+                            console.log(response.data.cast[i].name)
+                        }
+                    }
                 })
                 .catch((error) => {
                     console.error(error)
                 })
-            }
 
             return this.castMovie;
+
         },
         
-    },
-
-    mounted() {
-        this.getCast();
     }, 
 
+    mounted(){
+        this.getCast();
+    }, 
 }
 </script>
 
@@ -177,6 +180,10 @@ export default {
             padding: 0 .2rem;
             scrollbar-color: #993338 #5f625f;
             scrollbar-width: thin;
+        }
+
+        .text-actors{
+            font-size: .5rem;
         }
     }
 }

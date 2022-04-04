@@ -36,19 +36,23 @@
 
             <p v-if="vote != 0" class="text-danger">Vote:</p>
             <i v-for="(star,index) in starVote(vote)" :key="index" class="bi bi-star-fill"></i> 
-            <p>{{id}}</p>
+            <div>
+                <p class="text-danger mb-0">Actors/Actress</p>
+                <span  class="text-actors" v-for="(actor,indexTv) in castTv" :key="indexTv">{{actor + " | "}}</span>
+                
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-//import axios from "axios"
+import axios from "axios"
 export default {
     name:"TvCard",
     data(){
         return{
             castTv:[],
-            apiUrlIdTv:"https://api.themoviedb.org/3/tv/{{idtv}}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US",
+            //apiUrlIdTv:"https://api.themoviedb.org/3/tv/{{idtv}}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US",
         }
     },
 
@@ -63,7 +67,7 @@ export default {
         "backdrop":String,
 
         "id":Number,
-
+        "loadedTvList":Array,
     },
 
     methods:{
@@ -85,7 +89,35 @@ export default {
             return number;
         },
 
+        getCast(){
+            const self = this;
+            //this.castTv = [];
+            
+                this.loadedTvList.forEach((element) =>{
+                    axios.get(`https://api.themoviedb.org/3/tv/${element.id}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US`)
+                    .then(function (response){
+                        for(let i = 0; i < 5;i++){ 
+                            if(response.data.cast[i] != null){
+                                self.castTv.push(response.data.cast[i].name);
+                                console.log(response.data.cast[i].name)
+                            }
+                        }
+                    })
+                    .catch((error) => {
+                        console.error(error)
+                    })
+                    
+                })
+    
+
+            return this.castTv;
+        },
+
     },
+
+    /*  created() {
+        this.getCast(this.id);
+    },  */
 
 }
 </script>
@@ -153,6 +185,10 @@ export default {
             padding: 0 .2rem;
             scrollbar-color: #993338 #5f625f;
             scrollbar-width: thin;
+        }
+
+        .text-actors{
+            font-size: .5rem;
         }
     }
 }
