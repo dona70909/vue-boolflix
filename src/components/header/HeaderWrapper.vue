@@ -52,6 +52,7 @@ export default {
         getSearchFilmApi(){
             this.getSearchTitle();
             if((this.title != undefined)){
+                /* limitare la lista 20 films? */
                 axios.all([axios.get(this.apiUrlTv += this.title),axios.get(this.apiUrlMovie += this.title)])
                 .then(axios.spread((responseTv,responseMovie) => {
                     console.warn("url")

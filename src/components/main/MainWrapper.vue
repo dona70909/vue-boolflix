@@ -30,7 +30,7 @@ export default {
         FilmCard,
     },
     props:{
-        "loadedFilmsList" :Array,
+        "loadedFilmsList":Array,
     },
 
     data(){
