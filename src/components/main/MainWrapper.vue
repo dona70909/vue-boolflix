@@ -5,7 +5,7 @@
             <div class="row px-1 d-flex flex-wrap justify-content-center container-film-cards py-4">
 
                 <!-- !!!!  **************** FILMS CARDS ************************* -->
-                <h1 class="text-danger col-12 text-center text-uppercase">Flms</h1>
+                <h1 class="text-danger col-12 text-center text-uppercase">Films</h1>
                 <FilmCard :loadedFilmsList="loadedFilmsList" class="col-12 col-sm-6 col-lg-4 col-xl-2 p-0" v-for="(film,indexMovie) in loadedFilmsList" :key="indexMovie.id"
                 :title="film.title"
                 :originalTitle="film.original_title"
