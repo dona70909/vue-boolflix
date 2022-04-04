@@ -37,13 +37,12 @@
             <p v-if="vote != 0" class="text-danger">Vote:</p>
             <i v-for="(star,index) in starVote(vote)" :key="index" class="bi bi-star-fill"></i> 
             <p>{{id}}</p>
-            
         </div>
     </div>
 </template>
 
 <script>
-//import axios from "axios"
+import axios from "axios"
 export default {
     name:"FilmCard",
     data(){
@@ -86,17 +85,19 @@ export default {
             return number;
         },
 
-     /*    getCast(){
+        getCast(){
             for(let i = 0; i<5;i++){
-                axios.get(`https://api.themoviedb.org/3/movie/${this.id}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US`)
+                axios.get(`https://api.themoviedb.org/3/movie/716677/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US`)
                 .then((response) =>{
-                    console.log(response)
+                    this.castMovie = response.data.name;
                 })
                 .catch((error) => {
                     console.error(error)
                 })
             }
-        } */
+
+            return this.castMovie;
+        } 
         
     },
 
