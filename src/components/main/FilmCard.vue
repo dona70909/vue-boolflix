@@ -37,6 +37,11 @@
             <p v-if="vote != 0" class="text-danger">Vote:</p>
             <i v-for="(star,index) in starVote(vote)" :key="index" class="bi bi-star-fill"></i> 
             <p>{{id}}</p>
+            <div>
+                <ul>
+                    <li v-for="(actor,index) in castMovie" :key="index">{{actor}}</li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>
@@ -86,10 +91,19 @@ export default {
         },
 
         getCast(){
-            for(let i = 0; i<5;i++){
-                axios.get(`https://api.themoviedb.org/3/movie/716677/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US`)
+            for(let i = 0; i < 5;i++){
+                
+                axios.get(`https://api.themoviedb.org/3/movie/${this.id}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US`)
                 .then((response) =>{
-                    this.castMovie = response.data.name;
+                    /* this.castMovie = response.data.name; */
+                    /*   for(let i = 0; i<5;i++){
+                        console.log("credits" + i)
+                        console.log(response.data.cast[i].name)
+                    } */
+                    console.log("+++++++++++++++++");
+                    console.log("credits" + i);
+                    this.castMovie.push(response.data.cast[i].name);
+                    
                 })
                 .catch((error) => {
                     console.error(error)
@@ -97,9 +111,13 @@ export default {
             }
 
             return this.castMovie;
-        } 
+        },
         
     },
+
+    mounted() {
+        this.getCast();
+    }, 
 
 }
 </script>
