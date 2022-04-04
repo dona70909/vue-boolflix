@@ -2,18 +2,18 @@
     <!-- col -->
     <div class="card position-relative">
         <!-- poster null and backdrop ok -->
-        <img v-show="poster != null" :class="((poster == null) && (backdrop != null))? 'd-none' : '' " class="card-img-top poster-img" :src="'http://image.tmdb.org/t/p/w500/' + poster"  :alt="nameSerie || title">
+        <img v-show="poster != null" :class="((poster == null) && (backdrop != null))? 'd-none' : '' " class="card-img-top poster-img" :src="'http://image.tmdb.org/t/p/w500/' + poster"  :alt="nameSerie">
         <div class="poster-img-empty " v-if="poster == null && backdrop != null">
-            <h5 class="text-poster-empty text-center">{{title}} {{nameSerie}}</h5>
+            <h5 class="text-poster-empty text-center">{{nameSerie}}</h5>
         </div>  
 
         <!-- solo backdrop null and poster ok-->
-        <img v-show="backdrop != null" :class="((backdrop == null) && (poster != null))? 'd-none' : '' "  class="card-img-top back-img" :src="'http://image.tmdb.org/t/p/w500/' + backdrop" :alt="nameSerie || title">    
+        <img v-show="backdrop != null" :class="((backdrop == null) && (poster != null))? 'd-none' : '' "  class="card-img-top back-img" :src="'http://image.tmdb.org/t/p/w500/' + backdrop" :alt="nameSerie">    
         <div class="back-img-empty" v-show="backdrop == null && poster != null"></div>
 
         <!-- entrambi null -->
         <div class="poster-img-empty" v-if="(backdrop == null) && (poster == null)">
-            <h5 class="text-poster-empty text-center">{{title}} {{nameSerie}}</h5>
+            <h5 class="text-poster-empty text-center">{{nameSerie}}</h5>
         </div>
         <div class="back-img-empty" v-if="(backdrop == null) && (poster == null)"></div>
 
@@ -28,8 +28,8 @@
                 <country-flag v-show="language == 'en'" country="gb-eng" size='small'/> 
             </div>
 
-            <p v-show="(originalTitle !=  title) || (originSerieName != nameSerie)" class="text-danger">Original title:</p>
-            <p v-show="(originalTitle !=  title) || (originSerieName != nameSerie)" class="card-text">{{originSerieName}}</p>
+            <p v-show="(originSerieName != nameSerie)" class="text-danger">Original title:</p>
+            <p v-show="(originSerieName != nameSerie)" class="card-text">{{originSerieName}}</p>
 
             <p v-show="overview != '' " class="text-danger">Overview:</p>
             <p v-show="overview != '' " class="overview-text mb-1">{{overview}}</p>

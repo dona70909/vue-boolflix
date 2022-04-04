@@ -2,18 +2,18 @@
     <!-- col -->
     <div class="card position-relative">
         <!-- poster null and backdrop ok -->
-        <img v-show="poster != null" :class="((poster == null) && (backdrop != null))? 'd-none' : '' " class="card-img-top poster-img" :src="'http://image.tmdb.org/t/p/w500/' + poster"  :alt="nameSerie || title">
+        <img v-show="poster != null" :class="((poster == null) && (backdrop != null))? 'd-none' : '' " class="card-img-top poster-img" :src="'http://image.tmdb.org/t/p/w500/' + poster"  :alt="title">
         <div class="poster-img-empty " v-if="poster == null && backdrop != null">
             <h5 class="text-poster-empty text-center">{{title}}</h5>
         </div>  
 
         <!-- solo backdrop null and poster ok-->
-        <img v-show="backdrop != null" :class="((backdrop == null) && (poster != null))? 'd-none' : '' "  class="card-img-top back-img" :src="'http://image.tmdb.org/t/p/w500/' + backdrop" :alt="nameSerie || title">    
+        <img v-show="backdrop != null" :class="((backdrop == null) && (poster != null))? 'd-none' : '' "  class="card-img-top back-img" :src="'http://image.tmdb.org/t/p/w500/' + backdrop" :alt="title">    
         <div class="back-img-empty" v-show="backdrop == null && poster != null"></div>
 
         <!-- entrambi null -->
         <div class="poster-img-empty" v-if="(backdrop == null) && (poster == null)">
-            <h5 class="text-poster-empty text-center">{{title}} {{nameSerie}}</h5>
+            <h5 class="text-poster-empty text-center">{{title}}</h5>
         </div>
         <div class="back-img-empty" v-if="(backdrop == null) && (poster == null)"></div>
 
@@ -28,8 +28,8 @@
                 <country-flag v-show="language == 'en'" country="gb-eng" size='small'/> 
             </div>
 
-            <p v-show="(originalTitle !=  title) || (originSerieName != nameSerie)" class="text-danger">Original title:</p>
-            <p v-show="(originalTitle !=  title) || (originSerieName != nameSerie)" class="card-text">{{originalTitle}}</p>
+            <p v-show="(originalTitle !=  title)" class="text-danger">Original title:</p>
+            <p v-show="(originalTitle !=  title)" class="card-text">{{originalTitle}}</p>
 
             <p v-show="overview != '' " class="text-danger">Overview:</p>
             <p v-show="overview != '' " class="overview-text mb-1">{{overview}}</p>
@@ -37,6 +37,7 @@
             <p v-if="vote != 0" class="text-danger">Vote:</p>
             <i v-for="(star,index) in starVote(vote)" :key="index" class="bi bi-star-fill"></i> 
             <p>{{id}}</p>
+            
         </div>
     </div>
 </template>
@@ -55,7 +56,7 @@ export default {
     props:{
         "title":String,
         "originalTitle":String,
-        
+
         "overview":String,
         "language":String,
         "vote":Number,      
@@ -85,6 +86,17 @@ export default {
             return number;
         },
 
+     /*    getCast(){
+            for(let i = 0; i<5;i++){
+                axios.get(`https://api.themoviedb.org/3/movie/${this.id}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US`)
+                .then((response) =>{
+                    console.log(response)
+                })
+                .catch((error) => {
+                    console.error(error)
+                })
+            }
+        } */
         
     },
 
