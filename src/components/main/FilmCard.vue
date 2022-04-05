@@ -1,5 +1,4 @@
 <template>
-    <!-- col -->
     <div class="card">
         <!-- // # poster null and backdrop ok -->
         <img v-show="poster != null" :class="((poster == null) && (backdrop != null))? 'd-none' : '' " class="card-img-top poster-img" :src="'http://image.tmdb.org/t/p/w500/' + poster"  :alt="title">
@@ -49,7 +48,6 @@ export default {
     data(){
         return{
             castMovie:[],
-            //apiUrlIdMovie:"https://api.themoviedb.org/3/movie/{{movieid}}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US",
             firstMovie:"https://api.themoviedb.org/3/movie/",
             lastMovie:"/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US"
         }
@@ -123,7 +121,6 @@ export default {
         
     }, 
 
-    //prova computed return castMovie list
     mounted(){
         this.getCast();
     }, 
