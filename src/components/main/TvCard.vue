@@ -1,4 +1,5 @@
 <template>
+    <!-- col -->
     <div class="card">
         <!-- // # poster null and backdrop ok -->
         <img v-show="poster != null" :class="((poster == null) && (backdrop != null))? 'd-none' : '' " class="card-img-top poster-img" :src="'http://image.tmdb.org/t/p/w500/' + poster"  :alt="nameSerie">
@@ -121,6 +122,11 @@ export default {
         },
 
     },
+
+    /*  created() {
+        this.getCast(this.id);
+    },  */
+
 }
 </script>
 

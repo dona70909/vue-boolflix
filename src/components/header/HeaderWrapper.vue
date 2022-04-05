@@ -10,6 +10,25 @@
                     <button @click="getSearchFilmApi" class="btn text-white">Cerca!</button>
                 </div>
             </div>
+
+            <!-- // ! SELECT SOLO SE LE LISTE NON SONO VUOTE -->
+            <div v-show="listFilms.length != 0 || listsTv.length != 0 "  class="row flex-column flex-sm-row align-items-center justify-content-around py-4 selects-container">
+                <div  class="col-6 col-md-3 mb-2 mb-sm-0">
+                    <label for="select-movie">Choose Movie Genre</label>
+                    <select id="select-movie"  v-model="selectedMovie"  @change="$emit('changedSelGenre',selectedMovie)" class="form-select">
+                        <option class="text-white bg-dark" :value="defaultValueMovie">Choose Movie Genre</option>
+                        <option class="text-white bg-dark" :value="genreFilms.id" v-for="(genreFilms,index) in listGenresFilms" :key="index + 'films'">{{genreFilms.name}}</option>
+                    </select>
+                </div>
+
+                <div  class="col-6 col-md-3">
+                    <label for="select-tv">Choose Tv Genre</label>
+                    <select id="select-tv" v-model="selectedTv" @change="$emit('changedSelTv',selectedTv)" class="form-select">
+                        <option class="text-white bg-dark" :value="defaultValueTv">Choose Tv Genre</option>
+                        <option class="text-white bg-dark" :value="genreTv.id" v-for="(genreTv,index) in listGenresTv" :key="index + 'tv' ">{{genreTv.name}}</option>
+                    </select>
+                </div>
+            </div>
         </section>
     </header>
 </template>
@@ -27,6 +46,22 @@ export default {
             
             listFilms:[],
             listsTv:[],
+
+            /* //& liste generi film and tvseries */
+            listGenresTv:[],
+            listGenresFilms:[],
+
+            //& api uri per ottenere la lista dei generi
+            filmsGenresUri:"https://api.themoviedb.org/3/genre/movie/list?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US",
+            tvGenresUri:"https://api.themoviedb.org/3/genre/tv/list?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US",
+
+            //& select v-model movies
+            selectedMovie:undefined,
+            selectedTv:undefined,
+
+            //% default value confronto senza valori
+            defaultValueMovie:-1,
+            defaultValueTv:-1,
         }
     },
     
@@ -70,11 +105,30 @@ export default {
             }
         },
 
+
         // !function that emits the Array before obtained and give it to the parent 
         giveListToParent(){
             this.$emit('getListFilms',this.listFilms,this.listsTv);
         },
 
+    },
+
+    created(){
+        axios.all([axios.get(this.filmsGenresUri),axios.get(this.tvGenresUri)])
+        .then(axios.spread((genresFilms,genresTv) => {
+
+            this.listGenresFilms = genresFilms.data.genres;
+            this.listGenresTv = genresTv.data.genres;
+
+            //& emit to the parent in order to get the genres lists 
+            this.$emit('getGenresFilms', this.listGenresFilms);
+            this.$emit('getGenresTv', this.listGenresTv);
+        }))
+        .catch((errors) => {
+            if(errors.response.status == 422){
+                console.error("empty content");
+            }
+        })
     },
     
 }
@@ -93,6 +147,17 @@ header{
         background-color:$bgRed;
         font-weight: 600;
         text-transform: uppercase;
+    }
+
+    .selects-container{
+        background-color:$bgHeader;
+    }
+
+    label{
+        color: $textRed;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: .3rem;
     }
 }
 </style>

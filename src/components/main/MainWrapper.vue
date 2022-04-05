@@ -6,7 +6,7 @@
 
                 <!-- !!!!  **************** FILMS CARDS ************************* -->
                 <h1 class="col-12 text-uppercase">Films</h1>
-                <FilmCard :loadedFilmsList="loadedFilmsList" class="col-12 col-sm-6 col-lg-4 col-xl-2 p-0" v-for="(film,indexMovie) in loadedFilmsList" :key="indexMovie.id"
+                <FilmCard :loadedFilmsList="loadedFilmsList" class="col-12 col-sm-6 col-lg-4 col-xl-2 p-0" v-for="(film,indexMovie) in filterMovies" :key="indexMovie.id"
                 :title="film.title"
                 :originalTitle="film.original_title"
 
@@ -17,10 +17,11 @@
                 :vote="film.vote_average"
                 :poster="film.poster_path"
                 :backdrop="film.backdrop_path"
+                :genres="film.genre_ids"
                 />
                 <!-- !!!!  **************** SERIE CARDS ************************* -->
                 <h1 class="col-12 text-uppercase">Series</h1>
-                <TvCard class="col-12 col-sm-6 col-lg-4 col-xl-2 p-0 " v-for="(serie,indexTv) in loadedTvList" :key="indexTv.id"
+                <TvCard class="col-12 col-sm-6 col-lg-4 col-xl-2 p-0 " v-for="(serie,indexTv) in filterTv" :key="indexTv.id"
                 :nameSerie="serie.name"
                 :originSerieName="serie.original_name"
 
@@ -51,7 +52,35 @@ export default {
     props:{
         "loadedFilmsList":Array,
         "loadedTvList":Array,
+
+        "listGenresMovies":Array,
+        "selectedFilm":Number,
+
+        "listGenresTv":Array,
+        "selectedTv":Number,
     },
+
+    computed:{
+        filterMovies(){
+            if(this.selectedFilm === -1){
+                return this.loadedFilmsList;
+            }
+
+            return this.loadedFilmsList.filter(element => element.genre_ids[0] === this.selectedFilm)
+        
+        },
+
+        filterTv(){
+            if(this.selectedTv === -1){
+                return this.loadedTvList;
+            }
+
+            return this.loadedTvList.filter(element => element.genre_ids[0] === this.selectedTv)
+        
+        }
+
+        
+    }
 
 }
 </script>
@@ -70,5 +99,7 @@ main{
         padding: 2rem 1rem;
     }
 }
+
+
 
 </style>
