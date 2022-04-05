@@ -52,33 +52,20 @@ export default {
         getSearchFilmApi(){
             this.getSearchTitle();
             if((this.title != undefined)){
-                /* limitare la lista 20 films? */
                 axios.all([axios.get(this.apiUrlTv += this.title),axios.get(this.apiUrlMovie += this.title)])
                 .then(axios.spread((responseTv,responseMovie) => {
-                    console.warn("url")
-                    console.log(this.apiUrlMovie);
-                    console.log(this.apiUrlTv);
-
                     // # prima assegno alla lista la risposta 
-
                     this.listFilms = responseMovie.data.results;
                     this.listsTv = responseTv.data.results;
                     //Array.prototype.push.apply(this.listFilms,this.listsTv); 
                     //# poi faccio la chiamata per il parent 
                     this.giveListToParent();
-
-                    console.warn("list");
-                    console.log(this.listFilms);
-            
                     this.apiUrlMovie = "https://api.themoviedb.org/3/search/movie?api_key=3fb6e38d8c0865b83040430153ed8475&query=";
                     this.apiUrlTv = "https://api.themoviedb.org/3/search/tv?api_key=3fb6e38d8c0865b83040430153ed8475&query=";
-                    console.warn("url-reset")
-                    console.log(this.apiUrlMovie);
-                    console.log(this.apiUrlTv)
                 }))
                 .catch((errors) => {
                     if(errors.response.status == 422){
-                        console.error("empty content")
+                        console.error("empty content");
                     }
                 })
             }else{

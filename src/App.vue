@@ -30,10 +30,6 @@ export default {
     loadFilms(films,tv){
       this.loadedFilms = films;
       this.loadedTv = tv;
-      console.warn("loaded");
-      console.log(this.loadedFilms);
-      console.log("tv")
-      console.log(this.loadedTv);
     },
 
   }

@@ -50,7 +50,6 @@ export default {
     data(){
         return{
             castTv:[],
-            //apiUrlIdTv:"https://api.themoviedb.org/3/tv/{{idtv}}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US",
         }
     },
 
