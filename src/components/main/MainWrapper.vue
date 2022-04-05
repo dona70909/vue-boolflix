@@ -58,9 +58,9 @@ export default {
 </script>
 
 <style lang="scss">
-
+@import '@/assets/scss/partials/_variables.scss';
 main{
-    background: rgb(43, 40, 40);
+    background:$mainColorBg;
 }
 .container-film-cards{
     gap: 1rem;

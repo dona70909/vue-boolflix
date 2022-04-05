@@ -13,28 +13,29 @@
         <img  class="poster-img-empty" v-if="(backdrop == null) && (poster == null)" :src="require('@/assets/img/default_poster.jpg')" :alt="title">
         <img class="back-img-empty"  v-if="(backdrop == null) && (poster == null)" :src="require('@/assets/img/back.png')" :alt="title">
 
+        <!-- //% BODY -->
         <div class="card-body">
 
-            <p class="text-danger">Titolo:</p>
-            <p class="card-title">{{title}}</p>
+            <p class="text-red-bd d-inline-block me-1">Titolo:</p>
+            <p class="card-title d-inline-block">{{title}}</p>
 
             <div class="flag-wrapper">
-                <p class="d-inline-block text-danger me-2">Language:</p>
+                <p class="d-inline-block text-red-bd me-2">Language:</p>
                 <country-flag v-show="language != 'en'" :country='language' size='small'/>
                 <country-flag v-show="language == 'en'" country="gb-eng" size='small'/> 
             </div>
 
-            <p v-show="(originalTitle !=  title)" class="text-danger">Original title:</p>
+            <p v-show="(originalTitle !=  title)" class="text-red-bd">Original title:</p>
             <p v-show="(originalTitle !=  title)" class="card-text">{{originalTitle}}</p>
 
-            <p v-show="overview != '' " class="text-danger">Overview:</p>
+            <p v-show="overview != '' " class="text-red-bd">Overview:</p>
             <p v-show="overview != '' " class="overview-text mb-1">{{overview}}</p>
 
-            <p class="text-danger">Vote:</p>
+            <p class="text-red-bd d-inline-block me-1">Vote:</p>
             <i  v-for="(star,index) in starVote(vote)" :key="index + 'full'" class="bi bi-star-fill"></i>
             <i  v-for="(starEmpty,index) in emptyStars(vote)" :key="index + 'empty'" class="bi bi-star"></i>   
             <div>
-                <p class="text-danger mb-0">Actors/Actress</p>
+                <p class="text-red-bd mb-0">Actors</p>
                 <span  class="text-actors" v-for="(actor,indexAct) in castMovie" :key="indexAct + 'name' ">{{actor + " | "}}</span>
             </div>
         </div>

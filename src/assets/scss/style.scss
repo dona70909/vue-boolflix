@@ -1,6 +1,8 @@
+@import './partials/_variables.scss';
+
 .card{
     height: 200px; 
-    box-shadow: 2px 2px 2px rgb(14, 13, 13);
+    box-shadow: 2px 2px 2px $bgBodyCard;
     border: none;
     border-radius: 10px;
     img{
@@ -38,16 +40,16 @@
     .card-body{
         /* text/body visible only in hover */
         display: none;
-
-        background-color: rgb(67, 62, 62);
+        background-color:$bgBodyCard;
         color:white;
-        text-shadow: 1px 1px 1px black;
-        text-transform: uppercase;
         font-weight: 700;
         p{
             margin: 0;
             padding:0;
             font-size: .8rem;
+        }
+        .text-red-bd{
+            color:$textRed;
         }
         .bi-star-fill{
             color: rgb(220, 220, 23);
@@ -59,7 +61,7 @@
             height: 3.5rem;
             overflow-y:auto;
             padding: 0 .2rem;
-            scrollbar-color: #993338 #5f625f;
+            scrollbar-color: $textRed #5f625f;
             scrollbar-width: thin;
         }
 

@@ -41,8 +41,11 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/assets/scss/partials/_variables.scss';
 html{
-  background: rgb(43, 40, 40);
+  background:$mainColorBg;
 }
-
+#app{
+  font-family: Arial, Helvetica, sans-serif;
+}
 </style>
