@@ -99,7 +99,7 @@ export default {
                     //console.log(this.id);
                     for(let i = 0; i < 5 ; i++){
                         if(response.data.cast[i] != null){
-                            this.castMovie.push(response.data.cast[i].name + this.id);
+                            this.castMovie.push(response.data.cast[i].name);
                             console.log(response.data.cast[i].name)
                         }
                     }
@@ -116,7 +116,6 @@ export default {
 
     mounted(){
         console.warn(this.id);
-        console.log(this.loadedFilmsList[0].id);
         this.getCast();
     }, 
 
