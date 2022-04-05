@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-6 d-flex align-items-center justify-content-sm-end justify-content-center w-50">
                     <input @keyup.enter="getSearchFilmApi" v-model="modelTitle" class="me-2" type="text">
-                    <button @click="getSearchFilmApi" class="btn btn-danger text-white">Cerca!</button>
+                    <button @click="getSearchFilmApi" class="btn text-white">Cerca!</button>
                 </div>
             </div>
         </section>
@@ -95,11 +95,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/scss/partials/_variables.scss';
 header{
     background-color: black;
 
     img{
         height:40px;
+    }
+
+    button{
+        background-color:$bgRed;
+        font-weight: 600;
+        text-transform: uppercase;
     }
 }
 </style>

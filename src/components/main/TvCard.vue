@@ -26,7 +26,7 @@
                 <country-flag v-show="language == 'en'" country="gb-eng" size='small'/> 
             </div>
 
-            <p v-show="(originSerieName != nameSerie)" class="text-red">Original title:</p>
+            <p v-show="(originSerieName != nameSerie)" class="text-red-bd">Original title:</p>
             <p v-show="(originSerieName != nameSerie)" class="card-text">{{originSerieName}}</p>
 
             <p v-show="overview != '' " class="text-red-bd">Overview:</p>
@@ -36,7 +36,7 @@
             <i  v-for="(star,index) in starVote(vote)" :key="index + 'full'" class="bi bi-star-fill"></i>
             <i  v-for="(starEmpty,index) in emptyStars(vote)" :key="index + 'empty'" class="bi bi-star"></i> 
             <div>
-                <p class="text-red-bd mb-0">Actors</p>
+                <p class="text-red-bd mb-0">Actors:</p>
                 <span  class="text-actors" v-for="(actor,indexTv) in castTv" :key="indexTv">{{actor + " | "}}</span>
             </div>
         </div>
