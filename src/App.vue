@@ -1,12 +1,26 @@
 <template>
   <div id="app">
-    <HeaderWrapper  @getListFilms="loadFilms"/>
+    <HeaderWrapper
+    @getListFilms="loadFilms" 
+
+    @getGenresFilms="genresFilms"
+    @changedSelGenre="selMovieGenre"
+
+    @changedSelTv="selTvGenre"
+    @getGenresTv="genresTv"
+    />
     <MainWrapper
     :loadedFilmsList="loadedFilms"
     :loadedTvList="loadedTv"
 
+    :listGenresMovies ="listGenresFilms"
+    :selectedFilm="selectedMovieGenre"
+
+    :listGenresTv="listGenresTv"
+    :selectedTv="selectedTvGenre"
     />
   </div>
+
 </template>
 
 <script>
@@ -25,6 +39,12 @@ export default {
       loadedFilms:[],
       loadedTv:[],
 
+      listGenresFilms:[],
+      selectedMovieGenre:-1,
+
+      listGenresTv:[],
+      selectedTvGenre:-1,
+
     }
   },
 
@@ -33,6 +53,22 @@ export default {
       this.loadedFilms = films;
       this.loadedTv = tv;
     },
+
+    genresFilms(element){
+      this.listGenresFilms = element;
+    },
+
+    selMovieGenre(select){
+      this.selectedMovieGenre = parseInt(select);
+    },
+
+    genresTv(listGenTv){
+      this.listGenresTv = listGenTv;
+    },
+
+    selTvGenre(selTv){
+      this.selectedTvGenre = parseInt(selTv);
+    }
 
   }
 }
