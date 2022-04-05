@@ -3,24 +3,16 @@
     <div class="card">
         <!-- // # poster null and backdrop ok -->
         <img v-show="poster != null" :class="((poster == null) && (backdrop != null))? 'd-none' : '' " class="card-img-top poster-img" :src="'http://image.tmdb.org/t/p/w500/' + poster"  :alt="nameSerie">
-        <!-- <div class="poster-img-empty" v-if="poster == null && backdrop != null">
-            <h5 class="text-poster-empty text-center">{{nameSerie}}</h5>
-        </div>   -->
-        <img class="poster-img-empty" v-if="poster == null && backdrop != null" src="https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg" alt="">
+        <img class="poster-img-empty" v-if="poster == null && backdrop != null" :src="require('@/assets/img/default_poster.jpg')" :alt="nameSerie">
 
         <!-- //# solo backdrop null and poster ok-->
         <img v-show="backdrop != null" :class="((backdrop == null) && (poster != null))? 'd-none' : '' "  class="card-img-top back-img" :src="'http://image.tmdb.org/t/p/w500/' + backdrop" :alt="nameSerie">    
         <!-- <div   v-show="backdrop == null && poster != null"></div> -->
-        <img class="back-img-empty" v-show="backdrop == null && poster != null" src="https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg" alt="">
+        <img class="back-img-empty" v-show="backdrop == null && poster != null" :src="require('@/assets/img/default-img.jpg')" :alt="nameSerie">
 
         <!--//# entrambi null -->
-        <!-- <div v-if="(backdrop == null) && (poster == null)">
-            <h5 class="text-poster-empty text-center">{{nameSerie}}</h5>
-        </div> -->
-        <img  class="poster-img-empty" v-if="(backdrop == null) && (poster == null)" src="https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg" alt="">
-
-        <!--  <div  v-if="(backdrop == null) && (poster == null)"></div> -->
-        <img class="back-img-empty"  v-if="(backdrop == null) && (poster == null)" src="https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg" alt="">
+        <img  class="poster-img-empty" v-if="(backdrop == null) && (poster == null)" :src="require('@/assets/img/default_poster.jpg')" :alt="nameSerie">
+        <img class="back-img-empty"  v-if="(backdrop == null) && (poster == null)" :src="require('@/assets/img/default-img.jpg')" alt="">
 
         <div class="card-body">
 
