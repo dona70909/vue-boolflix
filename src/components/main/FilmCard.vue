@@ -34,9 +34,9 @@
             <p v-show="overview != '' " class="text-danger">Overview:</p>
             <p v-show="overview != '' " class="overview-text mb-1">{{overview}}</p>
 
-            <p v-if="vote != 0" class="text-danger">Vote:</p>
+            <p class="text-danger">Vote:</p>
             <i v-for="(star,index) in starVote(vote)" :key="index" class="bi bi-star-fill"></i>
-            <i v-show="vote == 0"  v-for="(star,index) in starVote(5)" :key="index + 'zero'"    class="bi bi-star"></i>  
+            <i  v-for="(star,index) in starVote(5 - vote)" :key="index + 'zero'"    class="bi bi-star"></i>  
             <div>
                 <p class="text-danger mb-0">Actors/Actress</p>
                 <span  class="text-actors" v-for="(actor,indexAct) in castMovie" :key="indexAct + 'name' ">{{actor + " | "}}</span>
