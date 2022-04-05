@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-    <HeaderWrapper @getListFilms="loadFilms"/>
+    <HeaderWrapper  @getListFilms="loadFilms"/>
     <MainWrapper
     :loadedFilmsList="loadedFilms"
     :loadedTvList="loadedTv"
+
     />
   </div>
 </template>
@@ -23,6 +24,7 @@ export default {
     return{
       loadedFilms:[],
       loadedTv:[],
+
     }
   },
 

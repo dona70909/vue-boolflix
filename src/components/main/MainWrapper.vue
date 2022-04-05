@@ -17,7 +17,6 @@
                 :vote="film.vote_average"
                 :poster="film.poster_path"
                 :backdrop="film.backdrop_path"
-
                 />
                 <!-- !!!!  **************** SERIE CARDS ************************* -->
                 <h1 class="col-12 text-uppercase">Series</h1>
