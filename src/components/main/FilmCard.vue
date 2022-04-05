@@ -115,26 +115,6 @@ export default {
 
             return this.castMovie; 
 
-            /*for(let i = 0;i < 5;i++){
-                axios.get(this.firstMovie + id + this.lastMovie)
-                .then((response)=>{
-                    //console.log(this.id);
-                    for(let i = 0; i < 5 ; i++){
-                        if(response.data.cast[i] != null){
-                            this.castMovie.push(response.data.cast[i].name);
-                            console.log(response.data.cast[i].name)
-                        }
-                    }
-
-                    
-                })
-                .catch((error) => {
-                    console.error(error)
-                })
-            }
-
-            return this.castMovie*/
-
         },
         
     }, 
