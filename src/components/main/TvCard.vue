@@ -12,7 +12,7 @@
 
         <!--//# entrambi null -->
         <img  class="poster-img-empty" v-if="(backdrop == null) && (poster == null)" :src="require('@/assets/img/default_poster.jpg')" :alt="nameSerie">
-        <img class="back-img-empty"  v-if="(backdrop == null) && (poster == null)" :src="require('@/assets/img/back.png')" alt="">
+        <img class="back-img-empty"  v-if="(backdrop == null) && (poster == null)" :src="require('@/assets/img/back.png')" :alt="nameSerie">
 
         <div class="card-body">
 
