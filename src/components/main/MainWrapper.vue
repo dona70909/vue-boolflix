@@ -5,7 +5,7 @@
             <div class="row px-1 d-flex flex-wrap justify-content-center container-film-cards py-4">
 
                 <!-- !!!!  **************** FILMS CARDS ************************* -->
-                <h1 class="col-12 text-center text-uppercase">Films</h1>
+                <h1 class="col-12 text-uppercase">Films:</h1>
                 <FilmCard :loadedFilmsList="loadedFilmsList" class="col-12 col-sm-6 col-lg-4 col-xl-2 p-0" v-for="(film,indexMovie) in loadedFilmsList" :key="indexMovie.id"
                 :title="film.title"
                 :originalTitle="film.original_title"
@@ -20,7 +20,7 @@
 
                 />
                 <!-- !!!!  **************** SERIE CARDS ************************* -->
-                <h1 class="col-12 text-center text-uppercase">Series</h1>
+                <h1 class="col-12 text-uppercase">Series:</h1>
                 <TvCard class="col-12 col-sm-6 col-lg-4 col-xl-2 p-0 " v-for="(serie,indexTv) in loadedTvList" :key="indexTv.id"
                 :nameSerie="serie.name"
                 :originSerieName="serie.original_name"
@@ -33,7 +33,7 @@
                 :backdrop="serie.backdrop_path"
                 />
 
-                <div class="text-white text-center text-uppercase" v-if="loadedFilmsList.length == 0 && loadedTvList.length == 0">No results</div>
+                <h1 class="text-white text-uppercase" v-if="loadedFilmsList.length == 0 || loadedTvList.length == 0">No results...</h1>
             </div>
         </section>
     </main>
@@ -67,6 +67,7 @@ main{
 
     h1{
         color:$textRed;
+        background: $bgBlack;
     }
 }
 
