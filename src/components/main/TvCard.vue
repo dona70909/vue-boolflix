@@ -8,11 +8,11 @@
         <!-- //# solo backdrop null and poster ok-->
         <img v-show="backdrop != null" :class="((backdrop == null) && (poster != null))? 'd-none' : '' "  class="card-img-top back-img" :src="'http://image.tmdb.org/t/p/w500/' + backdrop" :alt="nameSerie">    
         <!-- <div   v-show="backdrop == null && poster != null"></div> -->
-        <img class="back-img-empty" v-show="backdrop == null && poster != null" :src="require('@/assets/img/default-img.jpg')" :alt="nameSerie">
+        <img class="back-img-empty" v-show="backdrop == null && poster != null" :src="require('@/assets/img/back.png')" :alt="nameSerie">
 
         <!--//# entrambi null -->
         <img  class="poster-img-empty" v-if="(backdrop == null) && (poster == null)" :src="require('@/assets/img/default_poster.jpg')" :alt="nameSerie">
-        <img class="back-img-empty"  v-if="(backdrop == null) && (poster == null)" :src="require('@/assets/img/default-img.jpg')" alt="">
+        <img class="back-img-empty"  v-if="(backdrop == null) && (poster == null)" :src="require('@/assets/img/back.png')" alt="">
 
         <div class="card-body">
 
