@@ -14,9 +14,9 @@
             <!-- // ! SELECT SOLO SE LE LISTE NON SONO VUOTE -->
             <div v-show="listFilms.length != 0 || listsTv.length != 0 "  class="row flex-column flex-sm-row align-items-center justify-content-around py-4 selects-container">
                 <div  class="col-6 col-md-3 mb-2 mb-sm-0">
-                    <label for="select-movie">Choose Movie Genre</label>
+                    <label for="select-movie">Choose Film Genre</label>
                     <select id="select-movie"  v-model="selectedMovie"  @change="$emit('changedSelGenre',selectedMovie)" class="form-select">
-                        <option class="text-white bg-dark" :value="defaultValueMovie">Choose Movie Genre</option>
+                        <option class="text-white bg-dark" :value="defaultValueMovie">All Films</option>
                         <option class="text-white bg-dark" :value="genreFilms.id" v-for="(genreFilms,index) in listGenresFilms" :key="index + 'films'">{{genreFilms.name}}</option>
                     </select>
                 </div>
@@ -24,7 +24,7 @@
                 <div  class="col-6 col-md-3">
                     <label for="select-tv">Choose Tv Genre</label>
                     <select id="select-tv" v-model="selectedTv" @change="$emit('changedSelTv',selectedTv)" class="form-select">
-                        <option class="text-white bg-dark" :value="defaultValueTv">Choose Tv Genre</option>
+                        <option class="text-white bg-dark" :value="defaultValueTv">All Tv Series</option>
                         <option class="text-white bg-dark" :value="genreTv.id" v-for="(genreTv,index) in listGenresTv" :key="index + 'tv' ">{{genreTv.name}}</option>
                     </select>
                 </div>

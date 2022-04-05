@@ -6,7 +6,7 @@
 
                 <!-- !!!!  **************** FILMS CARDS ************************* -->
                 <h1 class="col-12 text-uppercase">Films</h1>
-                <FilmCard :loadedFilmsList="loadedFilmsList" class="col-12 col-sm-6 col-lg-4 col-xl-2 p-0" v-for="(film,indexMovie) in filterMovies" :key="indexMovie.id"
+                <FilmCard :loadedFilmsList="loadedFilmsList" class="col-12 col-sm-6 col-lg-4 col-xl-2 col-xxl-1 p-0" v-for="(film,indexMovie) in filterMovies" :key="indexMovie.id"
                 :title="film.title"
                 :originalTitle="film.original_title"
 
@@ -21,7 +21,7 @@
                 />
                 <!-- !!!!  **************** SERIE CARDS ************************* -->
                 <h1 class="col-12 text-uppercase">Series</h1>
-                <TvCard class="col-12 col-sm-6 col-lg-4 col-xl-2 p-0 " v-for="(serie,indexTv) in filterTv" :key="indexTv.id"
+                <TvCard class="col-12 col-sm-6 col-lg-4 col-xl-2 col-xxl-1 p-0 " v-for="(serie,indexTv) in filterTv" :key="indexTv.id"
                 :nameSerie="serie.name"
                 :originSerieName="serie.original_name"
 
