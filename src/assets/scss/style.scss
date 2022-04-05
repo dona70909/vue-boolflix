@@ -6,21 +6,12 @@
     img{
         width:100%;
         height: 200px;
-
         object-fit: center;
     }
     .poster-img-empty{
         /* only when poster image == null */
         width:100%;
         height: 200px;
-
-        background: rgb(162, 20, 20);
-        font-weight: 900;
-        text-shadow: 2px 2px 10px black;
-        text-transform: uppercase;
-        display:flex; 
-        justify-content: center; 
-        align-items:center;
     }
     .back-img-empty{
         /* only backdrop == null  */
@@ -29,7 +20,6 @@
         width:100%;
         height: 200px;
 
-        background: rgb(46, 44, 44);
     }
     .card-body{
         /* text/body visible only in hover */
@@ -95,7 +85,6 @@
 }
 .card:hover .back-img-empty{
     display: block;
-    transform: scale(1.2);
 }
 
 .card:hover .card-body{

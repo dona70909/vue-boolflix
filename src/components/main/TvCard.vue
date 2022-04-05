@@ -1,23 +1,28 @@
 <template>
     <!-- col -->
-    <div class="card position-relative">
-        <!-- poster null and backdrop ok -->
+    <div class="card">
+        <!-- // # poster null and backdrop ok -->
         <img v-show="poster != null" :class="((poster == null) && (backdrop != null))? 'd-none' : '' " class="card-img-top poster-img" :src="'http://image.tmdb.org/t/p/w500/' + poster"  :alt="nameSerie">
-        <div class="poster-img-empty " v-if="poster == null && backdrop != null">
+        <!-- <div class="poster-img-empty" v-if="poster == null && backdrop != null">
             <h5 class="text-poster-empty text-center">{{nameSerie}}</h5>
-        </div>  
+        </div>   -->
+        <img class="poster-img-empty" v-if="poster == null && backdrop != null" src="https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg" alt="">
 
-        <!-- solo backdrop null and poster ok-->
+        <!-- //# solo backdrop null and poster ok-->
         <img v-show="backdrop != null" :class="((backdrop == null) && (poster != null))? 'd-none' : '' "  class="card-img-top back-img" :src="'http://image.tmdb.org/t/p/w500/' + backdrop" :alt="nameSerie">    
-        <div class="back-img-empty" v-show="backdrop == null && poster != null"></div>
+        <!-- <div   v-show="backdrop == null && poster != null"></div> -->
+        <img class="back-img-empty" v-show="backdrop == null && poster != null" src="https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg" alt="">
 
-        <!-- entrambi null -->
-        <div class="poster-img-empty" v-if="(backdrop == null) && (poster == null)">
+        <!--//# entrambi null -->
+        <!-- <div v-if="(backdrop == null) && (poster == null)">
             <h5 class="text-poster-empty text-center">{{nameSerie}}</h5>
-        </div>
-        <div class="back-img-empty" v-if="(backdrop == null) && (poster == null)"></div>
+        </div> -->
+        <img  class="poster-img-empty" v-if="(backdrop == null) && (poster == null)" src="https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg" alt="">
 
-        <div class="card-body p-0 position-absolute">
+        <!--  <div  v-if="(backdrop == null) && (poster == null)"></div> -->
+        <img class="back-img-empty"  v-if="(backdrop == null) && (poster == null)" src="https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie.jpg" alt="">
+
+        <div class="card-body">
 
             <p class="text-danger">Titolo:</p>
             <p class="card-title">{{nameSerie}}</p>
