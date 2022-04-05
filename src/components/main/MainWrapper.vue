@@ -17,6 +17,7 @@
                 :vote="film.vote_average"
                 :poster="film.poster_path"
                 :backdrop="film.backdrop_path"
+
                 />
                 <!-- !!!!  **************** SERIE CARDS ************************* -->
                 <h1 class="text-danger col-12 text-center text-uppercase">Series</h1>
@@ -25,7 +26,6 @@
                 :originSerieName="serie.original_name"
 
                 :id = serie.id
-
                 :overview="serie.overview"
                 :language="serie.original_language"
                 :vote="serie.vote_average"
@@ -53,6 +53,7 @@ export default {
         "loadedFilmsList":Array,
         "loadedTvList":Array,
     },
+
 }
 </script>
 

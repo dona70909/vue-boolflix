@@ -38,8 +38,9 @@
             <i v-for="(star,index) in starVote(vote)" :key="index" class="bi bi-star-fill"></i> 
             <div>
                 <p class="text-danger mb-0">Actors/Actress</p>
-                <span  class="text-actors" v-for="(actor,indexAct) in castMovie" :key="indexAct">{{actor + " | "}}</span>
+                <span  class="text-actors" v-for="(actor,indexAct) in castMovie" :key="indexAct + 'name' ">{{actor + " | "}}</span>
             </div>
+            <p class="text-danger">{{id}}</p>
         </div>
     </div>
 </template>
@@ -51,8 +52,9 @@ export default {
     data(){
         return{
             castMovie:[],
-            apiUrlIdMovie:"https://api.themoviedb.org/3/movie/{{movieid}}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US",
-
+            //apiUrlIdMovie:"https://api.themoviedb.org/3/movie/{{movieid}}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US",
+            firstMovie:"https://api.themoviedb.org/3/movie/",
+            lastMovie:"/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US"
         }
     },
 
@@ -69,7 +71,6 @@ export default {
         "id":Number,
 
         "loadedFilmsList":Array,
-
     },
 
     methods:{
@@ -91,12 +92,14 @@ export default {
             return number;
         },
 
-        getCast(){ 
-            axios.get(`https://api.themoviedb.org/3/movie/${this.id}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US`)
+        getCast(){
+            //`https://api.themoviedb.org/3/movie/${this.id}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US` 
+            axios.get(this.firstMovie + this.id + this.lastMovie)
                 .then((response)=>{
+                    //console.log(this.id);
                     for(let i = 0; i < 5 ; i++){
                         if(response.data.cast[i] != null){
-                            this.castMovie.push(response.data.cast[i].name);
+                            this.castMovie.push(response.data.cast[i].name + this.id);
                             console.log(response.data.cast[i].name)
                         }
                     }
@@ -112,8 +115,18 @@ export default {
     }, 
 
     mounted(){
+        console.warn(this.id);
+        console.log(this.loadedFilmsList[0].id);
         this.getCast();
     }, 
+
+    watch:{
+        id(){
+            this.castMovie=[];
+            this.id;
+            this.getCast();
+        }
+    }
 }
 </script>
 
