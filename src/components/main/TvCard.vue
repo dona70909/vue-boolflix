@@ -35,11 +35,11 @@
             <p v-show="overview != '' " class="overview-text mb-1">{{overview}}</p>
 
             <p v-if="vote != 0" class="text-danger">Vote:</p>
-            <i v-for="(star,index) in starVote(vote)" :key="index" class="bi bi-star-fill"></i> 
+            <i  v-for="(star,index) in starVote(vote)" :key="index + 'full'" class="bi bi-star-fill"></i>
+            <i  v-for="(starEmpty,index) in emptyStars(vote)" :key="index + 'empty'" class="bi bi-star"></i> 
             <div>
                 <p class="text-danger mb-0">Actors/Actress</p>
                 <span  class="text-actors" v-for="(actor,indexTv) in castTv" :key="indexTv">{{actor + " | "}}</span>
-                
             </div>
         </div>
     </div>
@@ -86,6 +86,17 @@ export default {
                 number = Math.round(number);
             }
 
+            return number;
+        },
+
+        emptyStars(number){ 
+            if(number > 5){
+                number = 5;
+                number = 5 - number;
+            } else {
+                number = Math.round(number);
+                number = 5 - number;
+            }
             return number;
         },
 

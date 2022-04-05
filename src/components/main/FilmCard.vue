@@ -41,7 +41,6 @@
                 <p class="text-danger mb-0">Actors/Actress</p>
                 <span  class="text-actors" v-for="(actor,indexAct) in castMovie" :key="indexAct + 'name' ">{{actor + " | "}}</span>
             </div>
-            <p class="text-danger">{{id}}</p>
         </div>
     </div>
 </template>
@@ -112,7 +111,6 @@ export default {
                     for(let i = 0; i < 5 ; i++){
                         if(response.data.cast[i] != null){
                             this.castMovie.push(response.data.cast[i].name);
-                            console.log(response.data.cast[i].name)
                         }
                     }
 
@@ -130,7 +128,6 @@ export default {
 
     //prova computed return castMovie list
     mounted(){
-        console.warn(this.id);
         this.getCast();
     }, 
 
