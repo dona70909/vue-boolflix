@@ -16,31 +16,31 @@
         <!-- //% BODY -->
         <div class="card-body">
 
-            <p class="text-red-bd d-inline-block me-1">Titolo:</p>
-            <p class="card-title d-inline-block">{{nameSerie}}</p>
+            <p class="text-red-bd d-inline-block me-1 text-small">Titolo:</p>
+            <p class="d-inline-block text-small uppercase">{{nameSerie}}</p>
 
             <div class="flag-wrapper">
-                <p class="d-inline-block text-red-bd me-2">Language:</p>
+                <p class="d-inline-block text-red-bd me-2 text-small">Language:</p>
                 <country-flag v-show="language != 'en'" :country='language' size='small'/>
                 <country-flag v-show="language == 'en'" country="gb-eng" size='small'/> 
             </div>
 
-            <p v-show="(originSerieName != nameSerie)" class="text-red-bd ">Original title:</p>
-            <p v-show="(originSerieName != nameSerie)" class="card-text">{{originSerieName}}</p>
+            <p v-show="(originSerieName != nameSerie)" class="text-red-bd text-small">Original title:</p>
+            <p v-show="(originSerieName != nameSerie)" class="text-small uppercase">{{originSerieName}}</p>
 
             <p v-show="overview != '' " class="text-red-bd">Overview:</p>
             <p v-show="overview != '' " class="overview-text mb-1">{{overview}}</p>
 
-            <p  class="text-red-bd d-inline-block me-1">Vote:</p>
+            <p  class="text-red-bd text-small d-inline-block me-1">Vote:</p>
             <i  v-for="(star,index) in starVote(vote)" :key="index + 'full'" class="bi bi-star-fill"></i>
             <i  v-for="(starEmpty,index) in emptyStars(vote)" :key="index + 'empty'" class="bi bi-star"></i> 
             <div>
-                <p class="text-red-bd mb-0">Actors:</p>
-                <span  class="text-actors" v-for="(actor,indexTv) in castTv" :key="indexTv">{{actor + " | "}}</span>
+                <p class="text-red-bd mb-0 text-small">Actors:</p>
+                <span class="text-small" v-for="(actor,indexTv) in castTv" :key="indexTv">{{actor + " | "}}</span>
             </div>
 
-            <p class="text-red-bd">Genres</p>
-            <span class="text-white fst-italic" v-for="(genre,index) in getGenre" :key="index + 'genres'">{{genre + " | "}}</span>
+            <p class="text-red-bd text-small">Genres:</p>
+            <span class="text-white fst-italic text-small" v-for="(genre,index) in getGenre" :key="index + 'genres'">{{genre + " | "}}</span>
         </div>
     </div>
 </template>

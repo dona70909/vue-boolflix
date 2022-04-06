@@ -44,19 +44,17 @@
         color:white;
         font-weight: 700;
         border:none;
+
         p{
             margin: 0;
             padding:0;
+        }
+
+        .text-small{
             font-size: .8rem;
         }
 
-        span{
-            margin: 0;
-            padding:0;
-            font-size: .8rem;
-        }
-
-        .card-text{
+        .uppercase{
             text-transform: uppercase;
         }
         .text-red-bd{
@@ -73,7 +71,7 @@
             overflow-y:auto; 
             scrollbar-width: thin;
             scrollbar-color: $textRed #5f625f;
-            padding: 0 .2rem; 
+            padding: 0 .1rem; 
         }
 
         .text-actors{

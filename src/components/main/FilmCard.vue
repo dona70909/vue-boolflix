@@ -17,30 +17,30 @@
         <div class="card-body">
 
             <p class="text-red-bd d-inline-block me-1">Titolo:</p>
-            <p class="card-text d-inline-block">{{title}}</p>
+            <p class="d-inline-block uppercase">{{title}}</p>
 
             <div class="flag-wrapper">
-                <p class="d-inline-block text-red-bd me-2">Language:</p>
+                <p class="d-inline-block text-red-bd me-1">Language:</p>
                 <country-flag v-show="language != 'en'" :country='language' size='small'/>
                 <country-flag v-show="language == 'en'" country="gb-eng" size='small'/> 
             </div>
 
             <p v-show="(originalTitle !=  title)" class="text-red-bd d-inline-block me-1">Original title:</p>
-            <p v-show="(originalTitle !=  title)" class="card-text d-inline-block">{{originalTitle}}</p>
+            <p v-show="(originalTitle !=  title)" class="card-text d-inline-block text-small uppercase">{{originalTitle}}</p>
 
-            <p v-show="overview != '' " class="text-red-bd">Overview:</p>
-            <p v-show="overview != '' " class="overview-text mb-1">{{overview}}</p>
+            <p v-show="overview != '' " class="text-red-bd m-0">Overview:</p>
+            <p v-show="overview != '' " class="overview-text mb-3">{{overview}}</p>
 
-            <p class="text-red-bd me-1">Vote:</p>
+            <p class="text-red-bd d-inline-block me-1">Vote:</p>
             <i  v-for="(star,index) in starVote(vote)" :key="index + 'full'" class="bi bi-star-fill"></i>
             <i  v-for="(starEmpty,index) in emptyStars(vote)" :key="index + 'empty'" class="bi bi-star"></i>   
             <div>
                 <p class="text-red-bd mb-0">Actors:</p>
-                <span  class="text-actors" v-for="(actor,indexAct) in castMovie" :key="indexAct + 'name' ">{{actor + " | "}}</span>
+                <span class="text-small" v-for="(actor,indexAct) in castMovie" :key="indexAct + 'name' ">{{actor + " | "}}</span>
             </div>
 
             <p class="text-red-bd">Genres</p>
-            <span class="text-white fst-italic" v-for="(genre,index) in getGenre" :key="index + 'genres'">{{genre + " | "}}</span>
+            <span class="text-white fst-italic text-small" v-for="(genre,index) in getGenre" :key="index + 'genres'">{{genre + " | "}}</span>
             <!-- <p class="text-primary" v-for="(genre,index) in genres" :key="index + 'gen' ">{{genre}}</p> -->
         </div>
     </div>
