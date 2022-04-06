@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-6 d-flex align-items-center justify-content-sm-end justify-content-center w-50">
                     <input @keyup.enter="getSearchFilmApi" v-model="modelTitle" class="me-2" type="text">
-                    <button @click="getSearchFilmApi" class="btn text-white">Cerca!</button>
+                    <button @click="getSearchFilmApi" class="btn text-white">Search!</button>
                 </div>
             </div>
 
