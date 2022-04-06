@@ -41,11 +41,7 @@
 
             <p class="text-red-bd">Genres</p>
             <p  class="text-white" v-for="(genre,index) in getGenre" :key="index + 'genres'">{{genre}}</p>
-            <p class="text-primary" v-for="(genre,index) in genres" :key="index + 'gen' ">{{genre}}</p>
-            <!--
-                ricevere la lista dei generi dal main e mostrare il genere in base all'id
-                cofrontare entrambi l'ids con il selected genre
-            -->
+            <!-- <p class="text-primary" v-for="(genre,index) in genres" :key="index + 'gen' ">{{genre}}</p> -->
         </div>
     </div>
 </template>
@@ -146,7 +142,7 @@ export default {
                     if(genreFilmId === genre.id){
                         console.warn(genreFilmId + " film genre id");
                         console.warn(genre.id + " id") 
-                        movieGenres.push(genre.id)
+                        movieGenres.push(genre.name)
                     }
 
                 })

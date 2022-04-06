@@ -63,12 +63,11 @@
 
         .overview-text{
             font-size: .7rem;
-                /* height: 3.5rem;
-                overflow-y:auto; 
-                scrollbar-width: thin;
-                scrollbar-color: $textRed #5f625f;
-                */
-                /* padding: 0 .2rem; */
+            height: 3.5rem;
+            overflow-y:auto; 
+            scrollbar-width: thin;
+            scrollbar-color: $textRed #5f625f;
+            padding: 0 .2rem; 
         }
 
         .text-actors{
