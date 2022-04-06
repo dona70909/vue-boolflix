@@ -40,7 +40,7 @@
             </div>
 
             <p class="text-red-bd">Genres</p>
-            <p  class="text-white" v-for="(genre,index) in getGenre" :key="index + 'genres'">{{genre}}</p>
+            <span class="text-white fst-italic" v-for="(genre,index) in getGenre" :key="index + 'genres'">{{genre + " | "}}</span>
         </div>
     </div>
 </template>
