@@ -31,13 +31,21 @@
             <p v-show="overview != '' " class="text-red-bd">Overview:</p>
             <p v-show="overview != '' " class="overview-text mb-1">{{overview}}</p>
 
-            <p class="text-red-bd d-inline-block me-1">Vote:</p>
+            <p class="text-red-bd me-1">Vote:</p>
             <i  v-for="(star,index) in starVote(vote)" :key="index + 'full'" class="bi bi-star-fill"></i>
             <i  v-for="(starEmpty,index) in emptyStars(vote)" :key="index + 'empty'" class="bi bi-star"></i>   
             <div>
                 <p class="text-red-bd mb-0">Actors:</p>
                 <span  class="text-actors" v-for="(actor,indexAct) in castMovie" :key="indexAct + 'name' ">{{actor + " | "}}</span>
             </div>
+
+            <p class="text-red-bd">Genres</p>
+            <p  class="text-white" v-for="(genre,index) in getGenre" :key="index + 'genres'">{{genre}}</p>
+            <p class="text-primary" v-for="(genre,index) in genres" :key="index + 'gen' ">{{genre}}</p>
+            <!--
+                ricevere la lista dei generi dal main e mostrare il genere in base all'id
+                cofrontare entrambi l'ids con il selected genre
+            -->
         </div>
     </div>
 </template>
@@ -49,9 +57,9 @@ export default {
     data(){
         return{
             castMovie:[],
-            //apiUrlIdMovie:"https://api.themoviedb.org/3/movie/{{movieid}}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US",
             firstMovie:"https://api.themoviedb.org/3/movie/",
-            lastMovie:"/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US"
+            lastMovie:"/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US",
+            //movieGenres:[],
         }
     },
 
@@ -69,6 +77,8 @@ export default {
 
         "loadedFilmsList":Array,
         "genres":Array,
+
+        "listGenresMovies":Array,
 
     },
 
@@ -102,11 +112,9 @@ export default {
             return number;
         },
 
-        getCast(){
-            //`https://api.themoviedb.org/3/movie/${this.id}/credits?api_key=3fb6e38d8c0865b83040430153ed8475&language=en-US` 
+        getCast(){ 
             axios.get(this.firstMovie + this.id + this.lastMovie)
                 .then((response)=>{
-                    //console.log(this.id);
                     for(let i = 0; i < 5 ; i++){
                         if(response.data.cast[i] != null){
                             this.castMovie.push(response.data.cast[i].name);
@@ -129,6 +137,24 @@ export default {
     mounted(){
         this.getCast();
     }, 
+
+    computed:{
+        getGenre(){
+            let movieGenres = [];
+            this.listGenresMovies.forEach((genre) => {
+                this.genres.forEach((genreFilmId)  => {
+                    if(genreFilmId === genre.id){
+                        console.warn(genreFilmId + " film genre id");
+                        console.warn(genre.id + " id") 
+                        movieGenres.push(genre.id)
+                    }
+
+                })
+            })
+
+            return movieGenres;
+        }
+    },
 
     watch:{
         id(){

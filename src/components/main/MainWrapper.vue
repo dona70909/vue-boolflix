@@ -6,7 +6,7 @@
 
                 <!-- !!!!  **************** FILMS CARDS ************************* -->
                 <h1 class="col-12 text-uppercase">Films</h1>
-                <FilmCard :loadedFilmsList="loadedFilmsList" class="col-12 col-sm-6 col-lg-4 col-xl-2 col-xxl-1 p-0" v-for="(film,indexMovie) in filterMovies" :key="indexMovie.id"
+                <FilmCard :loadedFilmsList="loadedFilmsList" class="col-12 col-sm-6 col-lg-4 col-xl-2 p-0" v-for="(film,indexMovie) in filterMovies" :key="indexMovie.id"
                 :title="film.title"
                 :originalTitle="film.original_title"
 
@@ -18,10 +18,12 @@
                 :poster="film.poster_path"
                 :backdrop="film.backdrop_path"
                 :genres="film.genre_ids"
+
+                :listGenresMovies="listGenresMovies"
                 />
                 <!-- !!!!  **************** SERIE CARDS ************************* -->
                 <h1 class="col-12 text-uppercase">Series</h1>
-                <TvCard class="col-12 col-sm-6 col-lg-4 col-xl-2 col-xxl-1 p-0 " v-for="(serie,indexTv) in filterTv" :key="indexTv.id"
+                <TvCard class="col-12 col-sm-6 col-lg-4 col-xl-2 p-0 " v-for="(serie,indexTv) in filterTv" :key="indexTv.id"
                 :nameSerie="serie.name"
                 :originSerieName="serie.original_name"
 
@@ -31,9 +33,12 @@
                 :vote="serie.vote_average"
                 :poster="serie.poster_path"
                 :backdrop="serie.backdrop_path"
+
+                :listGenresTv="listGenresTv"
+                :genres="serie.genre_ids"
                 />
 
-                <h1 class="text-white text-uppercase" v-if="loadedFilmsList.length == 0 || loadedTvList.length == 0">No results...</h1>
+                <h1 class="text-white text-uppercase" v-if="filterMovies.length == 0 || filterTv.length == 0">No results...</h1>
             </div>
         </section>
     </main>
@@ -64,19 +69,17 @@ export default {
         filterMovies(){
             if(this.selectedFilm === -1){
                 return this.loadedFilmsList;
-            }
+            } 
 
-            return this.loadedFilmsList.filter(element => element.genre_ids[0] === this.selectedFilm)
-        
+            /* return this.loadedFilmsList.filter(element => element.genre_ids[0] === this.selectedFilm)  */
+            return this.loadedFilmsList.filter(element => element.genre_ids.some((element) => element === this.selectedFilm)) 
         },
 
         filterTv(){
             if(this.selectedTv === -1){
                 return this.loadedTvList;
             }
-
-            return this.loadedTvList.filter(element => element.genre_ids[0] === this.selectedTv)
-        
+            return this.loadedTvList.filter(element => element.genre_ids.some((element) => element === this.selectedTv)) 
         }
 
         

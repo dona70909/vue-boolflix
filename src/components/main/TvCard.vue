@@ -7,7 +7,6 @@
 
         <!-- //# solo backdrop null and poster ok-->
         <img v-show="backdrop != null" :class="((backdrop == null) && (poster != null))? 'd-none' : '' "  class="card-img-top back-img" :src="'http://image.tmdb.org/t/p/w500/' + backdrop" :alt="nameSerie">    
-        <!-- <div   v-show="backdrop == null && poster != null"></div> -->
         <img class="back-img-empty" v-show="backdrop == null && poster != null" :src="require('@/assets/img/back.png')" :alt="nameSerie">
 
         <!--//# entrambi null -->
@@ -26,7 +25,7 @@
                 <country-flag v-show="language == 'en'" country="gb-eng" size='small'/> 
             </div>
 
-            <p v-show="(originSerieName != nameSerie)" class="text-red-bd">Original title:</p>
+            <p v-show="(originSerieName != nameSerie)" class="text-red-bd ">Original title:</p>
             <p v-show="(originSerieName != nameSerie)" class="card-text">{{originSerieName}}</p>
 
             <p v-show="overview != '' " class="text-red-bd">Overview:</p>
@@ -39,6 +38,9 @@
                 <p class="text-red-bd mb-0">Actors:</p>
                 <span  class="text-actors" v-for="(actor,indexTv) in castTv" :key="indexTv">{{actor + " | "}}</span>
             </div>
+
+            <p class="text-red-bd">Genres</p>
+            <p  class="text-white" v-for="(genre,index) in getGenre" :key="index + 'genres'">{{genre}}</p>
         </div>
     </div>
 </template>
@@ -65,6 +67,10 @@ export default {
 
         "id":Number,
         "loadedTvList":Array,
+
+        "listGenresTv":Array,
+        "genres":Array,
+
     },
 
     methods:{
@@ -123,9 +129,25 @@ export default {
 
     },
 
-    /*  created() {
-        this.getCast(this.id);
-    },  */
+
+    computed:{
+        getGenre(){
+            let tvGenres = [];
+            this.listGenresTv.forEach((genre) => {
+                this.genres.forEach((genreFilmId)  => {
+                    if(genreFilmId === genre.id){
+                        console.warn(genreFilmId + " film genre id");
+                        console.warn(genre.id + " id") 
+                        tvGenres.push(genre.name)
+                    }
+
+                })
+            })
+
+            return tvGenres;
+        }
+    },
+
 
 }
 </script>
