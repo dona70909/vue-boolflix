@@ -10,7 +10,7 @@
         <img class="back-img-empty" v-show="backdrop == null && poster != null" :src="require('@/assets/img/back.png')" :alt="title">
 
         <!--//# entrambi null -->
-        <img  class="poster-img-empty" v-if="(backdrop == null) && (poster == null)" :src="require('@/assets/img/default_poster.jpg')" :alt="title">
+        <img  class="poster-img-empt" v-if="(backdrop == null) && (poster == null)" :src="require('@/assets/img/default_poster.jpg')" :alt="title">
         <img class="back-img-empty"  v-if="(backdrop == null) && (poster == null)" :src="require('@/assets/img/back.png')" :alt="title">
 
         <!-- //% BODY -->
