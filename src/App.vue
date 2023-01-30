@@ -13,7 +13,7 @@
     :loadedFilmsList="loadedFilms"
     :loadedTvList="loadedTv"
 
-    :listGenresMovies ="listGenresFilms"
+    :listGenresMovies="listGenresFilms"
     :selectedFilm="selectedMovieGenre"
 
     :listGenresTv="listGenresTv"

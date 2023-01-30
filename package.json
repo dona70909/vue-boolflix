@@ -14,7 +14,9 @@
     "core-js": "^3.8.3",
     "icons": "^1.0.0",
     "vue": "^2.6.14",
-    "vue-country-flag": "^2.3.2"
+    "vue-country-flag": "^2.3.2",
+    "vue-router": "^3.2.0",
+    "vuex": "^3.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
