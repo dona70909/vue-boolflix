@@ -19,6 +19,8 @@
     :listGenresTv="listGenresTv"
     :selectedTv="selectedTvGenre"
     />
+
+    <!-- <router-view /> -->
   </div>
 
 </template>

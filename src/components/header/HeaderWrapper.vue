@@ -2,10 +2,13 @@
     <header>
         <section class="container-fluid">
             <div class="row flex-column flex-sm-row align-items-center justify-content-between px-5 py-4">
-                <div class="col-6 mb-2 mb-sm-0">
+                <div class="col-4 mb-2 mb-sm-0">
                     <img :src="require('@/assets/img/logo-netflix.png')" alt="">
                 </div>
-                <div class="col-6 d-flex align-items-center justify-content-sm-end justify-content-center w-50">
+               <!--  <div class="col-4">
+                    <router-link to="/">Home</router-link>
+                </div> -->
+                <div class="col-4 d-flex align-items-center justify-content-sm-end justify-content-center w-50">
                     <input @keyup.enter="getSearchFilmApi" v-model="modelTitle" class="me-2" type="text">
                     <button @click="getSearchFilmApi" class="btn text-white">Search!</button>
                 </div>

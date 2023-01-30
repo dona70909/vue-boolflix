@@ -42,6 +42,7 @@
             <p class="text-red-bd">Genres</p>
             <span class="text-white fst-italic text-small" v-for="(genre,index) in getGenre" :key="index + 'genres'">{{genre + " | "}}</span>
             <!-- <p class="text-primary" v-for="(genre,index) in genres" :key="index + 'gen' ">{{genre}}</p> -->
+            <span> {{ this.id }} id</span>
         </div>
     </div>
 </template>
@@ -140,8 +141,8 @@ export default {
             this.listGenresMovies.forEach((genre) => {
                 this.genres.forEach((genreFilmId)  => {
                     if(genreFilmId === genre.id){
-                        console.warn(genreFilmId + " film genre id");
-                        console.warn(genre.id + " id") 
+                       /*  console.warn(genreFilmId + " film genre id");
+                        console.warn(genre.id + " id")  */
                         movieGenres.push(genre.name)
                     }
 
@@ -154,6 +155,7 @@ export default {
 
     watch:{
         id(){
+            console.log('whatch out')
             this.castMovie=[];
             this.id;
             this.getCast();
